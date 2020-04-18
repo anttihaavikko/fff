@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -78,7 +79,7 @@ public class Flock : MonoBehaviour
 
         var scrollSpeed = Mathf.Max(20f, score - shownScore);
         shownScore = Mathf.MoveTowards(shownScore, score, Time.deltaTime * scrollSpeed * 2f);
-        scoreText.text = Mathf.RoundToInt(shownScore).ToString();
+        scoreText.text = FormatScore(Mathf.RoundToInt(shownScore));
 
         //collisions = all.Select(p => p.point).ToList();
 
@@ -171,7 +172,7 @@ public class Flock : MonoBehaviour
 
         if(birds.Count == 0)
         {
-            ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + score + "</size>");
+            ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>");
         }
     }
 
@@ -190,6 +191,13 @@ public class Flock : MonoBehaviour
         }
 
         return p;
+    }
+
+    public static string FormatScore(int score)
+    {
+        var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
+        nfi.NumberGroupSeparator = " ";
+        return score.ToString("#,0", nfi);
     }
 
     private Vector3 GetRandomPoint()

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8677127354012133260}
   - component: {fileID: 8677127354012133261}
   - component: {fileID: 8677127354012133250}
+  - component: {fileID: 6519781263333839924}
   m_Layer: 0
   m_Name: Pulse Ring
   m_TagString: Untagged
@@ -4761,3 +4762,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &6519781263333839924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677127354012133251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30b49d1a7fb84b229d7757e7af3043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
