@@ -409,7 +409,7 @@ public class MeshGenerator : MonoBehaviour {
         if (Random.value < 0.4f)
         {
             var decoration = decorations[Random.Range(0, decorations.Count)];
-            var d = Instantiate(decoration, pos, Quaternion.Euler(Vector3.zero));
+            var d = Instantiate(decoration, new Vector3(pos.x, pos.y, -2.5f), Quaternion.Euler(Vector3.zero));
             d.transform.localScale *= Random.Range(0.8f, 1.2f);
             d.transform.parent = transform;
         }

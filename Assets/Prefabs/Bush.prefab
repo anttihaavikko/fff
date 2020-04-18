@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6757527789554275334}
   - component: {fileID: 6757527789554275335}
   - component: {fileID: 6757527789554275337}
+  - component: {fileID: 739504311041769921}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -66,9 +67,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 322096333
+  m_SortingLayer: 4
+  m_SortingOrder: 500
   m_Sprite: {fileID: 21300000, guid: 2a922fde8c65241188f2fede34c9b1f2, type: 3}
   m_Color: {r: 0.003921569, g: 0.08627451, b: 0.15294118, a: 1}
   m_FlipX: 0
@@ -99,3 +100,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &739504311041769921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757527789554275332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3affd534d2c24f88888a62992c3b431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 6757527789554275337}
