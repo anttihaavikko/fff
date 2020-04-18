@@ -8,10 +8,12 @@ public class Bird : MonoBehaviour
     public Flock flock;
     public Rigidbody2D body;
 
+    private string id;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        id = System.Guid.NewGuid().ToString();
     }
 
     // Update is called once per frame
@@ -152,8 +154,20 @@ public class Bird : MonoBehaviour
 
             flock.RemoveBird(this);
             Destroy(gameObject);
+
+            var monster = collision.gameObject.GetComponentInParent<Slime>();
+
+            if(!monster.eaten.Contains(id))
+            {
+                monster.eaten.Add(id);
+            }
+
+            if(monster.eaten.Count > flock.eatLimit)
+            {
+                monster.eaten.Clear();
+                flock.eatLimit *= 3;
+                flock.SpawnMonster();
+            }
         }
     }
-
-    
 }

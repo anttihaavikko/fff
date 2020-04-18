@@ -8,12 +8,14 @@ public class Slime : MonoBehaviour {
 	public Rigidbody2D controlNode;
 	public Transform face;
     public Transform target;
+    public List<string> eaten;
 
     private Vector3[] vertices, shineVertices;
 	private Vector2[] vertices2d;
 	public MeshFilter meshFilter, shineMeshFilter;
 	private Mesh mesh, shineMesh;
 	public LineRenderer outline;
+    public float speed = 1f;
 
 	private Transform[] nodes;
 	private int[] indices;
@@ -36,6 +38,8 @@ public class Slime : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        eaten = new List<string>();
 
         //Resize();
 
@@ -162,7 +166,7 @@ public class Slime : MonoBehaviour {
 
 		if (target) {
 			Vector2 dir = (Vector2)controlNode.transform.position - (Vector2)target.position;
-			controlNode.AddForce (-dir * 2f * Time.deltaTime * 60f, ForceMode2D.Force);
+			controlNode.AddForce (-dir * 2f * Time.deltaTime * 60f * speed, ForceMode2D.Force);
 		}
 	}
 

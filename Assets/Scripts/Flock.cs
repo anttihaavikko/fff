@@ -11,6 +11,8 @@ public class Flock : MonoBehaviour
     public Slime monster;
     public TMPro.TMP_Text scoreText, multiText, scoreAddText;
     public Transform pickup;
+    public Slime monsterPrefab;
+    public int eatLimit = 25;
 
     private Camera cam;
     private List<Bird> birds;
@@ -91,6 +93,12 @@ public class Flock : MonoBehaviour
             monster.gameObject.SetActive(true);
         }
 
+        // speed up monster
+        if (score > 500)
+        {
+            monster.speed = 1f;
+        }
+
         CancelInvoke("HideAdditional");
         Invoke("HideAdditional", 1f);
     }
@@ -140,5 +148,19 @@ public class Flock : MonoBehaviour
     private Vector3 GetRandomPoint()
     {
         return new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
+    }
+
+    public void SpawnMonster()
+    {
+        CancelInvoke("DoSpawn");
+        Invoke("DoSpawn", 1f);
+    }
+
+    void DoSpawn()
+    {
+        var newMonster = Instantiate(monsterPrefab);
+        var dir = Random.value < 0.5f ? 1f : -1f;
+        newMonster.transform.position = new Vector3(dir * 25f, 0f, 0f);
+        newMonster.target = this.transform;
     }
 }

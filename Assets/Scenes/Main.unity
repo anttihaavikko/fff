@@ -964,6 +964,8 @@ MonoBehaviour:
   multiText: {fileID: 1219965673}
   scoreAddText: {fileID: 1397330346}
   pickup: {fileID: 718977156}
+  monsterPrefab: {fileID: 577385429381362641, guid: 4f8a2f03eae2d4a12864ea94155ba6dc,
+    type: 3}
 --- !u!1 &1045890936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2338,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1038607657}
+    - target: {fileID: 577385429381362641, guid: 4f8a2f03eae2d4a12864ea94155ba6dc,
+        type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 690478341397465202, guid: 4f8a2f03eae2d4a12864ea94155ba6dc,
         type: 3}
       propertyPath: lookTarget
