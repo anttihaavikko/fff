@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Flock : MonoBehaviour
 {
     public Bird birdPrefab;
+    public LayerMask wallMask;
 
     private Camera cam;
     private List<Bird> birds;
+    private List<Vector2> collisions;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +34,25 @@ public class Flock : MonoBehaviour
         {
             AddBird();
         }
+
+        //collisions = all.Select(p => p.point).ToList();
+
+        Debug.Log(IsInside(transform.position) ? "INSIDE" : "OUTSIDE");
     }
+
+    public bool IsInside(Vector3 pos)
+    {
+        var all = Physics2D.RaycastAll(pos, Vector2.up, 100f, wallMask);
+        return all.Length % 2 != 0;
+    }
+
+    //private void OnDrawGizmos()
+    //{
+    //    foreach (var a in collisions)
+    //    {
+    //        Gizmos.DrawSphere(a, 0.2f);
+    //    }
+    //}
 
     void AddBird()
     {
