@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickup
+  - SlimeTest
+  - SlimeLink
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - 
   - Bird
   - Walls
-  - 
-  - 
-  - 
+  - Link
+  - SlimeControl
+  - OuterWall
   - 
   - 
   - 
@@ -41,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pickups
+    uniqueID: 3802656005
+    locked: 0
+  - name: Birds
+    uniqueID: 3610521193
+    locked: 0
+  - name: Monster
+    uniqueID: 2553985659
+    locked: 0
+  - name: Walls
+    uniqueID: 322096333
     locked: 0

@@ -1,11 +1,15 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MeshGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LogoBall.cs">
     <Files>
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="97" Column="1" />
-      <File FileName="Assets/Scripts/Bird.cs" Line="102" Column="38" />
-      <File FileName="Assets/Scripts/Flock.cs" Line="41" Column="37" />
-      <File FileName="Assets/Scripts/MapGenerator.cs" Line="441" Column="40" />
-      <File FileName="Assets/Scripts/MeshGenerator.cs" Line="38" Column="3" />
+      <File FileName="Assets/Scripts/Bird.cs" Line="155" Column="52" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="78" Column="28" />
+      <File FileName="Assets/Scripts/MapGenerator.cs" Line="208" Column="29" />
+      <File FileName="Assets/Scripts/MeshGenerator.cs" Line="115" Column="51" />
+      <File FileName="Assets/Scripts/Slime.cs" Line="21" Column="25" />
+      <File FileName="Assets/Scripts/Face.cs" Line="183" Column="24" />
+      <File FileName="Assets/Scripts/Shine.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LogoBall.cs" Line="16" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,10 +17,15 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="MeshGenerator.cs" selected="True" />
+                <Node name="LogoBall.cs" selected="True" />
               </Node>
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Flock for Feast" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Flock : MonoBehaviour
 {
@@ -35,9 +36,14 @@ public class Flock : MonoBehaviour
             AddBird();
         }
 
+        if (Input.GetKeyDown(KeyCode.R) && Application.isEditor)
+        {
+            SceneManager.LoadScene("Main");
+        }
+
         //collisions = all.Select(p => p.point).ToList();
 
-        Debug.Log(IsInside(transform.position) ? "INSIDE" : "OUTSIDE");
+        //Debug.Log(IsInside(transform.position) ? "INSIDE" : "OUTSIDE");
     }
 
     public bool IsInside(Vector3 pos)
@@ -65,6 +71,11 @@ public class Flock : MonoBehaviour
         bird.flock = this;
         bird.transform.position = pos;
         birds.Add(bird);
+    }
+
+    public void RemoveBird(Bird bird)
+    {
+        birds.Remove(bird);
     }
 
     public List<Bird> GetBirds()

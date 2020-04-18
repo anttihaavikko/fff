@@ -143,6 +143,23 @@ public class Bird : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "SlimeLink")
+        {
+            var other = collision.gameObject.GetComponent<Rigidbody2D>();
+
+            if(other)
+            {
+                other.velocity = Vector2.zero;
+                other.AddForce(body.velocity * 0.6f, ForceMode2D.Impulse);
+            }
+
+            flock.RemoveBird(this);
+            Destroy(gameObject);
+        }
+    }
+
     private Vector3 GetRandomPoint()
     {
         return new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
