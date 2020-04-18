@@ -159,6 +159,10 @@ public class Bird : MonoBehaviour
                 other.AddForce(body.velocity * 0.6f, ForceMode2D.Impulse);
             }
 
+            EffectManager.Instance.AddEffect(0, transform.position);
+            EffectManager.Instance.AddEffect(1, transform.position);
+            EffectManager.Instance.AddEffect(2, transform.position);
+
             flock.RemoveBird(this);
             Destroy(gameObject);
 

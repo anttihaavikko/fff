@@ -20,6 +20,7 @@ public class Flock : MonoBehaviour
     private int score, multi;
     private float shownScore;
     private bool warnedMonster, toldBoost, hasBoosted;
+    private int eats;
 
     // Start is called before the first frame update
     void Start()
@@ -103,10 +104,12 @@ public class Flock : MonoBehaviour
         CancelInvoke("ShowIntro");
         CancelInvoke("ShowEatHelp");
 
+        eats++;
+
         if (score == 0)
             HideHelp();
 
-        var amount = birds.Count * multi;
+        var amount = birds.Count * multi * eats;
         score += amount;
 
         scoreAddText.text = "+" + amount;
@@ -163,6 +166,11 @@ public class Flock : MonoBehaviour
         birds.Remove(bird);
         multi = 1;
         multiText.text = "x" + multi;
+
+        if(birds.Count == 0)
+        {
+            ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + score + "</size>");
+        }
     }
 
     public List<Bird> GetBirds()
