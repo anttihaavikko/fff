@@ -173,8 +173,13 @@ public class Flock : MonoBehaviour
 
         if(birds.Count == 0)
         {
-            ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>");
+            Invoke("GameOver", 1f);
         }
+    }
+
+    void GameOver()
+    {
+        ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>");
     }
 
     public List<Bird> GetBirds()
@@ -203,7 +208,7 @@ public class Flock : MonoBehaviour
 
     private Vector3 GetRandomPoint()
     {
-        return new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
+        return new Vector3(Random.Range(-18f, 18f), Random.Range(-8f, 8f), 0);
     }
 
     public void SpawnMonster()

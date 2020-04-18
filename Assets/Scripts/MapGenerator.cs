@@ -11,7 +11,7 @@ public class MapGenerator : MonoBehaviour {
 	public string seed;
 	public bool useRandomSeed;
 
-	[Range(0,100)]
+    [Range(0,100)]
 	public int randomFillPercent;
 
 	public GameObject fillObject;
@@ -436,18 +436,24 @@ public class MapGenerator : MonoBehaviour {
 
 		float startTime = Time.realtimeSinceStartup;
 
-		//for (int x = 0; x < width; x ++) {
-		//	for (int y = 0; y < height; y ++) {
-		//		if (map [x, y] == 1 && GetSurroundingWallCount(x,y) < 8) {
-  //                  GameObject go = Instantiate(fillObject, new Vector3(x - width * 0.5f, y - height * 0.5f, 0) * mapScale, Quaternion.Euler(Vector3.zero));
-  //                  float scl = (UnityEngine.Random.value * 2f + 1.5f) * mapScale;
-  //                  go.transform.localScale = new Vector2(scl, scl);
-  //                  go.transform.parent = transform;
-  //              }
-		//	}
-		//}
+        //for (int x = 0; x < width; x++)
+        //{
+        //    for (int y = 0; y < height; y++)
+        //    {
+        //        if (map[x, y] == 1 && GetSurroundingWallCount(x, y) < 8)
+        //        {
+        //            if(UnityEngine.Random.value < 0.5f)
+        //            {
+        //                var decoration = decorations[UnityEngine.Random.Range(0, decorations.Count)];
+        //                var d = Instantiate(decoration, new Vector3(x - width * 0.5f, y - height * 0.5f, 0) * mapScale, Quaternion.Euler(Vector3.zero));
+        //                //float scl = (UnityEngine.Random.value * 2f + 1.5f) * mapScale;
+        //                //go.transform.localScale = new Vector2(scl, scl);
+        //                d.transform.parent = transform;
+        //            }
+        //        }
+        //    }
+        //}
 
-		Debug.Log ("Adding map took " + (Time.realtimeSinceStartup - startTime));
+        Debug.Log ("Adding map took " + (Time.realtimeSinceStartup - startTime));
 	}
-
 }

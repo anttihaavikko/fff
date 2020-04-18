@@ -9,7 +9,9 @@ public class MeshGenerator : MonoBehaviour {
 	public MeshFilter walls;
 	public MeshFilter cave;
 
-	public bool is2D, doColliders;
+    public List<Transform> decorations;
+
+    public bool is2D, doColliders;
 
 	List<Vector3> vertices;
 	List<int> triangles;
@@ -117,6 +119,8 @@ public class MeshGenerator : MonoBehaviour {
                 edgePoints[1] = new Vector2(vertices[outline[i]].x,vertices[outline[i]].z);
                 start = edgePoints[1];
                 edgeCollider.points = edgePoints;
+
+                AddDecorationTo(edgePoints[0]);
             }
 		}
 	}
@@ -399,4 +403,15 @@ public class MeshGenerator : MonoBehaviour {
 		}
 
 	}
+
+    void AddDecorationTo(Vector3 pos)
+    {
+        if (Random.value < 0.4f)
+        {
+            var decoration = decorations[Random.Range(0, decorations.Count)];
+            var d = Instantiate(decoration, pos, Quaternion.Euler(Vector3.zero));
+            d.transform.localScale *= Random.Range(0.8f, 1.2f);
+            d.transform.parent = transform;
+        }
+    }
 }

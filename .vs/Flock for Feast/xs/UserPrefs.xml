@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Poop.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RandomRotation.cs">
     <Files>
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="97" Column="1" />
-      <File FileName="Assets/Scripts/Bird.cs" Line="189" Column="62" />
-      <File FileName="Assets/Scripts/Flock.cs" Line="126" Column="60" />
-      <File FileName="Assets/Scripts/MapGenerator.cs" Line="208" Column="29" />
-      <File FileName="Assets/Scripts/MeshGenerator.cs" Line="115" Column="51" />
-      <File FileName="Assets/Scripts/Slime.cs" Line="144" Column="100" />
+      <File FileName="Assets/Scripts/Bird.cs" Line="150" Column="6" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="206" Column="72" />
+      <File FileName="Assets/Scripts/MapGenerator.cs" Line="12" Column="28" />
+      <File FileName="Assets/Scripts/MeshGenerator.cs" Line="409" Column="31" />
+      <File FileName="Assets/Scripts/Slime.cs" Line="46" Column="26" />
       <File FileName="Assets/Scripts/Face.cs" Line="183" Column="24" />
       <File FileName="Assets/Scripts/Shine.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/LogoBall.cs" Line="30" Column="1" />
-      <File FileName="Assets/Scripts/Poop.cs" Line="19" Column="13" />
+      <File FileName="Assets/Scripts/Poop.cs" Line="22" Column="62" />
+      <File FileName="Assets/Scripts/RandomRotation.cs" Line="10" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +19,7 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Poop.cs" selected="True" />
+                <Node name="RandomRotation.cs" selected="True" />
               </Node>
             </Node>
           </Node>
