@@ -131,16 +131,10 @@ public class Bird : MonoBehaviour
         if(collision.gameObject.tag == "Pickup")
         {
             var t = collision.gameObject.transform;
-            flock.AddBird(t.position);
             flock.AddScore();
+            flock.AddBird(t.position);
 
-            var p = GetRandomPoint();
-
-            while(!flock.IsInside(p)) {
-                p = GetRandomPoint();
-            }
-
-            t.position = p;
+            t.position = flock.GetPointInLevel();
         }
     }
 
@@ -161,8 +155,5 @@ public class Bird : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomPoint()
-    {
-        return new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
-    }
+    
 }

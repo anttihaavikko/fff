@@ -10,6 +10,7 @@ public class Flock : MonoBehaviour
     public LayerMask wallMask;
     public Slime monster;
     public TMPro.TMP_Text scoreText, multiText, scoreAddText;
+    public Transform pickup;
 
     private Camera cam;
     private List<Bird> birds;
@@ -24,7 +25,10 @@ public class Flock : MonoBehaviour
         birds = new List<Bird>();
         cam = Camera.main;
 
-        AddBird();
+        var p = IsInside(transform.position) ? transform.position : GetPointInLevel();
+        AddBird(p);
+
+        pickup.position = GetPointInLevel();
     }
 
     // Update is called once per frame
@@ -119,5 +123,22 @@ public class Flock : MonoBehaviour
     public List<Bird> GetBirds()
     {
         return birds;
+    }
+
+    public Vector3 GetPointInLevel()
+    {
+        var p = GetRandomPoint();
+
+        while (!IsInside(p))
+        {
+            p = GetRandomPoint();
+        }
+
+        return p;
+    }
+
+    private Vector3 GetRandomPoint()
+    {
+        return new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
     }
 }
