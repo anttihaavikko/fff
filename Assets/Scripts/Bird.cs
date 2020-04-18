@@ -25,8 +25,10 @@ public class Bird : MonoBehaviour
 
         Vector2 home = diff.normalized * speed * 100f;
         var separate = Separate(others) * 25;
+        var align = Align(others) * 0.5f;
+        var cohesion = Cohesion(others) * 2.5f;
 
-        body.AddForce(home + separate);
+        body.AddForce(home + separate + align + cohesion);
 
         var angle = Mathf.Atan2(body.velocity.y, body.velocity.x) / Mathf.PI * 180f - 90;
         transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -42,9 +44,62 @@ public class Bird : MonoBehaviour
         }
     }
 
+    private Vector2 Seek(Vector3 target)
+    {
+        return target - transform.position;  // A vector pointing from the position to the target
+    }
+
+    private Vector2 Cohesion(List<Bird> birds)
+    {
+        var neighbordist = 3f;
+        var sum = Vector3.zero;   // Start with empty vector to accumulate all positions
+        var count = 0;
+        foreach(var b in birds)
+        {
+            var d = Vector2.Distance(transform.position, b.transform.position);
+            if ((d > 0) && (d < neighbordist))
+            {
+                sum += b.transform.position;
+                count++;
+            }
+        }
+        if (count > 0)
+        {
+            sum /= count;
+            return Seek(sum);  // Steer towards the position
+        }
+        else
+        {
+            return Vector2.zero;
+        }
+    }
+
+    private Vector2 Align(List<Bird> birds)
+    {
+        var neighbordist = 3f;
+        var sum = Vector2.zero;
+        var count = 0;
+        foreach(var b in birds)
+        {
+            float d = Vector2.Distance(transform.position, b.transform.position);
+            if ((d > 0) && (d < neighbordist))
+            {
+                sum += b.body.velocity;
+                count++;
+            }
+        }
+        if (count > 0)
+        {
+            sum /= count;
+            return sum - body.velocity;
+        }
+
+        return Vector2.zero;
+    }
+
     private Vector2 Separate(List<Bird> birds)
     {
-        float desiredseparation = 0.6f;
+        float desiredseparation = 0.8f;
         Vector2 steer = new Vector2(0, 0);
         int count = 0;
         // For every boid in the system, check if it's too close
@@ -68,19 +123,6 @@ public class Bird : MonoBehaviour
             steer /= count;
         }
 
-        // As long as the vector is greater than 0
-        if (steer.magnitude > 0)
-        {
-            // First two lines of code below could be condensed with new PVector setMag() method
-            // Not using this method until Processing.js catches up
-            // steer.setMag(maxspeed);
-
-            // Implement Reynolds: Steering = Desired - Velocity
-            steer.Normalize();
-            //steer.mult(maxspeed);
-            //steer.sub(velocity);
-            //steer.limit(maxforce);
-        }
         return steer;
     }
 
