@@ -143,6 +143,8 @@ public class Bird : MonoBehaviour
 
             t.position = flock.GetPointInLevel();
 
+            EffectManager.Instance.AddEffect(4, t.position);
+
             canBoost = true;
         }
     }
@@ -162,6 +164,8 @@ public class Bird : MonoBehaviour
             EffectManager.Instance.AddEffect(0, transform.position);
             EffectManager.Instance.AddEffect(1, transform.position);
             EffectManager.Instance.AddEffect(2, transform.position);
+
+            EffectManager.Instance.AddEffect(3, transform.position);
 
             flock.RemoveBird(this);
             Destroy(gameObject);

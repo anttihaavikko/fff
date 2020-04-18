@@ -159,6 +159,8 @@ public class Flock : MonoBehaviour
         bird.transform.position = pos;
         bird.transform.localScale *= Random.Range(0.9f, 1.1f);
         birds.Add(bird);
+
+        EffectManager.Instance.AddEffect(4, pos);
     }
 
     public void RemoveBird(Bird bird)
