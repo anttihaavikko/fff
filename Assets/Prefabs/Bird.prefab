@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8127452027405200686}
   - component: {fileID: 374844482}
   - component: {fileID: 2277592567412694253}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flock: {fileID: 0}
+  body: {fileID: 2277592567412694253}
 --- !u!210 &8127452027405200686
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

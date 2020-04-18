@@ -45,4 +45,9 @@ public class Flock : MonoBehaviour
         bird.transform.position = pos;
         birds.Add(bird);
     }
+
+    public List<Bird> GetBirds()
+    {
+        return birds;
+    }
 }
