@@ -21,4 +21,14 @@ public class Bird : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, flock.transform.position, speed);
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Pickup")
+        {
+            var t = collision.gameObject.transform;
+            flock.AddBird(t.position);
+            t.position = new Vector3(Random.Range(-8f, 8f), Random.Range(-4.5f, 4.5f), 0);
+        }
+    }
 }

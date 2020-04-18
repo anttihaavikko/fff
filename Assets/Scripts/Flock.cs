@@ -38,7 +38,7 @@ public class Flock : MonoBehaviour
         AddBird(transform.position);
     }
 
-    void AddBird(Vector3 pos)
+    public void AddBird(Vector3 pos)
     {
         var bird = Instantiate(birdPrefab);
         bird.flock = this;
