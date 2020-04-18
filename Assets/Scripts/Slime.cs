@@ -43,6 +43,8 @@ public class Slime : MonoBehaviour {
 
         //Resize();
 
+        RandomizeSpawn();
+
         mesh = meshFilter.mesh;
 		shineMesh = shineMeshFilter.mesh;
 
@@ -141,7 +143,7 @@ public class Slime : MonoBehaviour {
 			face.transform.localPosition += Mathf.Abs(Mathf.Sin (Time.time * 5f)) * Vector3.up * 0.05f;
 		}
 
-		face.transform.position = new Vector3(face.transform.position.x, face.transform.position.y, -0.02f);
+		face.transform.position = new Vector3(face.transform.position.x, face.transform.position.y, -2.1f);
 	}
 
 	private void PositionShine() {
@@ -178,5 +180,11 @@ public class Slime : MonoBehaviour {
     void Resize()
     {
         transform.localScale = Vector3.one * size;
+    }
+
+    public void RandomizeSpawn()
+    {
+        var dir = Random.value < 0.5f ? 1f : -1f;
+        transform.position = new Vector3(dir * 25f, 0f, -2f);
     }
 }

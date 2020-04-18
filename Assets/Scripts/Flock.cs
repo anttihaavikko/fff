@@ -9,7 +9,7 @@ public class Flock : MonoBehaviour
     public Bird birdPrefab;
     public LayerMask wallMask;
     public Slime monster;
-    public TMPro.TMP_Text scoreText, multiText, scoreAddText;
+    public TMPro.TMP_Text scoreText, multiText, scoreAddText, helpText;
     public Transform pickup;
     public Slime monsterPrefab;
     public int eatLimit = 25;
@@ -19,6 +19,7 @@ public class Flock : MonoBehaviour
     private List<Vector2> collisions;
     private int score, multi;
     private float shownScore;
+    private bool warnedMonster, toldBoost, hasBoosted;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,19 @@ public class Flock : MonoBehaviour
         AddBird(p);
 
         pickup.position = GetPointInLevel();
+
+        Invoke("ShowIntro", 3f);
+        Invoke("ShowEatHelp", 8f);
+    }
+
+    void ShowIntro()
+    {
+        ShowHelp("POINT WITH MOUSE\nTO MOVE AROUND", 4f);
+    }
+
+    void ShowEatHelp()
+    {
+        ShowHelp("FIND FOOD\nTO REPRODUCE", 4f);
     }
 
     // Update is called once per frame
@@ -41,6 +55,15 @@ public class Flock : MonoBehaviour
         Vector3 mouseInWorld = cam.ScreenToWorldPoint(mp);
 
         transform.position = mouseInWorld;
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            hasBoosted = true;
+            birds.ForEach(b => b.Boost());
+
+            if (toldBoost)
+                HideHelp();
+        }
 
         if(Input.GetKeyDown(KeyCode.A) && Application.isEditor)
         {
@@ -77,6 +100,12 @@ public class Flock : MonoBehaviour
 
     public void AddScore()
     {
+        CancelInvoke("ShowIntro");
+        CancelInvoke("ShowEatHelp");
+
+        if (score == 0)
+            HideHelp();
+
         var amount = birds.Count * multi;
         score += amount;
 
@@ -87,10 +116,17 @@ public class Flock : MonoBehaviour
 
         multi++;
 
-        // activate monster
-        if(score > 10)
+        if(score > 10 && !warnedMonster)
         {
+            ShowHelp("WATCH OUT FOR\nTHE BIG BADDIE!", 3f);
             monster.gameObject.SetActive(true);
+            warnedMonster = true;
+        }
+
+        if (score > 250 && !toldBoost && !hasBoosted)
+        {
+            ShowHelp("YOU CAN ALSO BOOST\nWITH MOUSE BUTTON", 3f);
+            toldBoost = true;
         }
 
         // speed up monster
@@ -118,6 +154,7 @@ public class Flock : MonoBehaviour
         var bird = Instantiate(birdPrefab);
         bird.flock = this;
         bird.transform.position = pos;
+        bird.transform.localScale *= Random.Range(0.9f, 1.1f);
         birds.Add(bird);
     }
 
@@ -159,8 +196,24 @@ public class Flock : MonoBehaviour
     void DoSpawn()
     {
         var newMonster = Instantiate(monsterPrefab);
-        var dir = Random.value < 0.5f ? 1f : -1f;
-        newMonster.transform.position = new Vector3(dir * 25f, 0f, 0f);
-        newMonster.target = this.transform;
+        newMonster.RandomizeSpawn();
+        newMonster.target = transform;
+    }
+
+    void ShowHelp(string help, float hideAfter = 0f)
+    {
+        helpText.text = help;
+        Tweener.Instance.ScaleTo(helpText.transform, Vector3.one, 0.3f, 0f, TweenEasings.BounceEaseOut);
+
+        if (hideAfter > 0)
+        {
+            CancelInvoke("HideHelp");
+            Invoke("HideHelp", hideAfter);
+        }
+    }
+
+    void HideHelp()
+    {
+        Tweener.Instance.ScaleTo(helpText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
     }
 }

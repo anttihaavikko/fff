@@ -7,8 +7,11 @@ public class Bird : MonoBehaviour
 {
     public Flock flock;
     public Rigidbody2D body;
+    public Rigidbody2D poopPrefab;
 
     private string id;
+    private bool canBoost = true;
+    private float speedMod = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,19 +33,21 @@ public class Bird : MonoBehaviour
         var align = Align(others) * 0.5f;
         var cohesion = Cohesion(others) * 2.5f;
 
-        body.AddForce(home + separate + align + cohesion);
+        body.AddForce((home + separate + align + cohesion) * speedMod);
 
         var angle = Mathf.Atan2(body.velocity.y, body.velocity.x) / Mathf.PI * 180f - 90;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         LimitVelocity();
+
+        speedMod = Mathf.MoveTowards(speedMod, 1f, Time.deltaTime);
     }
 
     void LimitVelocity()
     {
         if(body.velocity.magnitude > 10f)
         {
-            body.velocity = body.velocity.normalized * 10f;
+            body.velocity = body.velocity.normalized * 10f * speedMod;
         }
     }
 
@@ -137,6 +142,8 @@ public class Bird : MonoBehaviour
             flock.AddBird(t.position);
 
             t.position = flock.GetPointInLevel();
+
+            canBoost = true;
         }
     }
 
@@ -168,6 +175,19 @@ public class Bird : MonoBehaviour
                 flock.eatLimit *= 3;
                 flock.SpawnMonster();
             }
+        }
+    }
+
+    public void Boost()
+    {
+        if(canBoost)
+        {
+            canBoost = false;
+            speedMod = 2f;
+
+            var poop = Instantiate(poopPrefab, transform.position, Quaternion.identity);
+            poop.transform.localScale *= Random.Range(0.8f, 1f);
+            poop.velocity = -body.velocity.normalized * 20f;
         }
     }
 }

@@ -5182,6 +5182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flock: {fileID: 0}
   body: {fileID: 2277592567412694253}
+  poopPrefab: {fileID: 5217644646314584409, guid: ec1f2dc98b3a9427990af2c1040516d6,
+    type: 3}
 --- !u!50 &2277592567412694253
 Rigidbody2D:
   serializedVersion: 4
@@ -5201,7 +5203,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 984724bffcf14467d9b797ee6c5365ea, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &374844482
 CircleCollider2D:
@@ -5218,7 +5220,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.11
 --- !u!95 &3978084811198418496
 Animator:
   serializedVersion: 3

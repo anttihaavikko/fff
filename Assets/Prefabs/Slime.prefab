@@ -920,7 +920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689929562257461623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.76, y: 0, z: 0}
+  m_LocalPosition: {x: 24.76, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 686100647287390565}
@@ -948,9 +948,11 @@ MonoBehaviour:
   controlNode: {fileID: 659573142852011521}
   face: {fileID: 691949609208442047}
   target: {fileID: 0}
+  eaten: []
   meshFilter: {fileID: 715316009236658209}
   shineMeshFilter: {fileID: 712594155231716207}
   outline: {fileID: 592672587471801757}
+  speed: 1
   radius: 3.5
   slimeColor: 1
   polyCollider: {fileID: 666679872913213319}
