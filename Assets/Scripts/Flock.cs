@@ -90,7 +90,8 @@ public class Flock : MonoBehaviour
     public bool IsInside(Vector3 pos)
     {
         var all = Physics2D.RaycastAll(pos, Vector2.up, 100f, wallMask);
-        return all.Length % 2 != 0;
+        var occupied = Physics2D.OverlapCircle(pos, 1f);
+        return all.Length % 2 != 0 && !occupied;
     }
 
     //private void OnDrawGizmos()
