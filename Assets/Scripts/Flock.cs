@@ -22,6 +22,7 @@ public class Flock : MonoBehaviour
     private float shownScore;
     private bool warnedMonster, toldBoost, hasBoosted;
     private int eats;
+    private int monsterCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -110,7 +111,7 @@ public class Flock : MonoBehaviour
         if (score == 0)
             HideHelp();
 
-        var amount = birds.Count * multi * eats;
+        var amount = birds.Count * multi * eats * monsterCount * monsterCount;
         score += amount;
 
         scoreAddText.text = "+" + amount;
@@ -216,6 +217,7 @@ public class Flock : MonoBehaviour
         var newMonster = Instantiate(monsterPrefab);
         newMonster.RandomizeSpawn();
         newMonster.target = transform;
+        monsterCount++;
     }
 
     void ShowHelp(string help, float hideAfter = 0f)
