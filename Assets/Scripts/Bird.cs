@@ -132,6 +132,7 @@ public class Bird : MonoBehaviour
         {
             var t = collision.gameObject.transform;
             flock.AddBird(t.position);
+            flock.AddScore();
 
             var p = GetRandomPoint();
 

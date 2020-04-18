@@ -8,14 +8,19 @@ public class Flock : MonoBehaviour
 {
     public Bird birdPrefab;
     public LayerMask wallMask;
+    public Slime monster;
+    public TMPro.TMP_Text scoreText, multiText, scoreAddText;
 
     private Camera cam;
     private List<Bird> birds;
     private List<Vector2> collisions;
+    private int score, multi;
+    private float shownScore;
 
     // Start is called before the first frame update
     void Start()
     {
+        multi = 1;
         birds = new List<Bird>();
         cam = Camera.main;
 
@@ -41,6 +46,10 @@ public class Flock : MonoBehaviour
             SceneManager.LoadScene("Main");
         }
 
+        var scrollSpeed = Mathf.Max(20f, score - shownScore);
+        shownScore = Mathf.MoveTowards(shownScore, score, Time.deltaTime * scrollSpeed * 2f);
+        scoreText.text = Mathf.RoundToInt(shownScore).ToString();
+
         //collisions = all.Select(p => p.point).ToList();
 
         //Debug.Log(IsInside(transform.position) ? "INSIDE" : "OUTSIDE");
@@ -60,6 +69,33 @@ public class Flock : MonoBehaviour
     //    }
     //}
 
+    public void AddScore()
+    {
+        var amount = birds.Count * multi;
+        score += amount;
+
+        scoreAddText.text = "+" + amount;
+        multiText.text = "x" + multi;
+
+        Tweener.Instance.ScaleTo(scoreAddText.transform, Vector3.one, 0.3f, 0f, TweenEasings.BounceEaseOut);
+
+        multi++;
+
+        // activate monster
+        if(score > 10)
+        {
+            monster.gameObject.SetActive(true);
+        }
+
+        CancelInvoke("HideAdditional");
+        Invoke("HideAdditional", 1f);
+    }
+
+    void HideAdditional()
+    {
+        Tweener.Instance.ScaleTo(scoreAddText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseIn);
+    }
+
     void AddBird()
     {
         AddBird(transform.position);
@@ -76,6 +112,8 @@ public class Flock : MonoBehaviour
     public void RemoveBird(Bird bird)
     {
         birds.Remove(bird);
+        multi = 1;
+        multiText.text = "x" + multi;
     }
 
     public List<Bird> GetBirds()

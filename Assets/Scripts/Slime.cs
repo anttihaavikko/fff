@@ -17,6 +17,7 @@ public class Slime : MonoBehaviour {
 
 	private Transform[] nodes;
 	private int[] indices;
+    private float size = 0.5f;
 
 	private int points = 50;
 
@@ -36,7 +37,9 @@ public class Slime : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		mesh = meshFilter.mesh;
+        //Resize();
+
+        mesh = meshFilter.mesh;
 		shineMesh = shineMeshFilter.mesh;
 
 		vertices = new Vector3[points];
@@ -58,8 +61,9 @@ public class Slime : MonoBehaviour {
 			node.transform.Rotate(new Vector3(0, 0, -90 + angle / Mathf.PI * 180));
 
 			if (prev) {
-				node.GetComponent<HingeJoint2D> ().connectedBody = prev;
-				node.GetComponent<HingeJoint2D> ().connectedAnchor = new Vector2 (-1, 0);
+                var joint = node.GetComponent<HingeJoint2D>();
+                joint.connectedBody = prev;
+                joint.connectedAnchor = new Vector2 (-0.5f, 0);
 			}
 
 			prev = node.GetComponent<Rigidbody2D> ();
@@ -146,7 +150,10 @@ public class Slime : MonoBehaviour {
 
 	void Update() {
 
-		UpdateVerts ();
+        //size = Mathf.MoveTowards(size, 5f, 0.001f);
+        //Resize();
+
+        UpdateVerts ();
 		UpdateMesh ();
 
 		PositionShine ();
@@ -158,4 +165,14 @@ public class Slime : MonoBehaviour {
 			controlNode.AddForce (-dir * 2f * Time.deltaTime * 60f, ForceMode2D.Force);
 		}
 	}
+
+    private void LateUpdate()
+    {
+        
+    }
+
+    void Resize()
+    {
+        transform.localScale = Vector3.one * size;
+    }
 }
