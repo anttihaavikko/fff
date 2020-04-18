@@ -154,7 +154,7 @@ MonoBehaviour:
   height: 20
   seed: 
   useRandomSeed: 1
-  randomFillPercent: 45
+  randomFillPercent: 40
   fillObject: {fileID: 3846287777571234013, guid: abd326a58fcaf4c1cba57622b528d02a,
     type: 3}
   mapScale: 1
