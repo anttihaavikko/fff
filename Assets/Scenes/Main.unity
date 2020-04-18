@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 2013719086020508529, guid: 358622f5718394edeb1d9c91f3f8a262, type: 3}
   - {fileID: 6757527789554275334, guid: 4a353b5da3d3047e08a91dacff8de8cc, type: 3}
   - {fileID: 2013719086020508529, guid: 358622f5718394edeb1d9c91f3f8a262, type: 3}
+  - {fileID: 8626149695490735073, guid: f556b437937704e5ab79f93fe1c751d7, type: 3}
   is2D: 0
   doColliders: 1
 --- !u!1 &51118968
@@ -967,8 +968,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 322096333
-  m_SortingLayer: 4
+  m_SortingLayerID: -1276213881
+  m_SortingLayer: 5
   m_SortingOrder: 999
 --- !u!224 &530252873
 RectTransform:

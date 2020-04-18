@@ -7,6 +7,8 @@ TagManager:
   - Pickup
   - SlimeTest
   - SlimeLink
+  - Poop
+  - Bird
   layers:
   - Default
   - TransparentFX
@@ -55,4 +57,7 @@ TagManager:
     locked: 0
   - name: Walls
     uniqueID: 322096333
+    locked: 0
+  - name: Lurker
+    uniqueID: 3018753415
     locked: 0
