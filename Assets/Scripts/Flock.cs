@@ -337,6 +337,8 @@ public class Flock : MonoBehaviour
         helpText.text = help;
         Tweener.Instance.ScaleTo(helpText.transform, Vector3.one, 0.3f, 0f, TweenEasings.BounceEaseOut);
 
+        AudioManager.Instance.Highpass(true);
+
         if (hideAfter > 0)
         {
             CancelInvoke("HideHelp");
@@ -353,6 +355,8 @@ public class Flock : MonoBehaviour
 
     void HideHelp()
     {
+        AudioManager.Instance.Highpass(false);
+
         Tweener.Instance.ScaleTo(helpText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
 
         AudioManager.Instance.PlayEffectAt(23, Vector3.zero, 1.223f);
