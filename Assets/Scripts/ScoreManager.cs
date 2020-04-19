@@ -104,7 +104,7 @@ public class ScoreManager : MonoBehaviour {
 					leaderBoardString += FormatLeaderboardRow (lb.scores [i].position, lb.scores [i].name, long.Parse (lb.scores [i].score), lb.scores [i].pid);
 					FlagManager.Instance.SetPositionFlag (i, lb.scores [i].locale);
                     leaderBoardPositionsString += lb.scores[i].position + ". " + lb.scores[i].name + "\n";
-                    leaderBoardScoresString += lb.scores[i].score + "\n";
+                    leaderBoardScoresString += Flock.FormatScore(long.Parse(lb.scores[i].score)) + "\n";
 				}
 			}
 

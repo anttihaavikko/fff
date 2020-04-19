@@ -16,6 +16,7 @@ public class Flock : MonoBehaviour
     public int eatLimit = 25;
     public NameInput nameInput;
     public GameButton sendbutton, againButton, menuButton;
+    public EffectCamera effectCamera;
 
     private Camera cam;
     private List<Bird> birds;
@@ -62,7 +63,7 @@ public class Flock : MonoBehaviour
 
         transform.position = mouseInWorld;
 
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             hasBoosted = true;
             birds.ForEach(b => b.Boost());
@@ -176,6 +177,7 @@ public class Flock : MonoBehaviour
     {
         var bird = Instantiate(birdPrefab);
         bird.flock = this;
+        bird.cam = effectCamera;
         bird.transform.position = pos;
         bird.transform.localScale *= Random.Range(0.9f, 1.1f);
         birds.Add(bird);
@@ -280,7 +282,7 @@ public class Flock : MonoBehaviour
         return p;
     }
 
-    public static string FormatScore(int score)
+    public static string FormatScore(long score)
     {
         var nfi = (NumberFormatInfo)CultureInfo.InvariantCulture.NumberFormat.Clone();
         nfi.NumberGroupSeparator = " ";

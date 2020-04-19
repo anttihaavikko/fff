@@ -5,14 +5,12 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class EffectCamera : MonoBehaviour {
 
-    private static readonly float defaultLensDistortion = 30f;
+    private static readonly float defaultLensDistortion = 10f;
 
     private float cutoff = 1f, targetCutoff = 1f;
 	private float prevCutoff = 1f;
 	private float cutoffPos;
 	private float transitionTime = 0.5f;
-    public Cinemachine.CinemachineImpulseSource impulseSource;
-    public Transform virtualCamera;
 
     private PostProcessVolume ppVolume;
 	private float chromaAmount, splitAmount;
@@ -33,24 +31,35 @@ public class EffectCamera : MonoBehaviour {
 
 	void Start() {
         ppVolume = GetComponent<PostProcessVolume>();
-        originalPos = virtualCamera.position;
         ppVolume.profile.TryGetSettings(out ca);
         ppVolume.profile.TryGetSettings(out ld);
         ppVolume.profile.TryGetSettings(out cs);
-    }
+
+		originalPos = transform.position;
+
+	}
 
 	void Update() {
         // chromatic aberration update
         if (ppVolume)
         {
-            chromaAmount = Mathf.MoveTowards(chromaAmount, 0, Time.deltaTime * chromaSpeed);
-            ca.intensity.value = chromaAmount * 0.7f;
-
-            //bulgeAmount = Mathf.MoveTowards(bulgeAmount, defaultLensDistortion, Time.deltaTime * bulgeSpeed);
-            //ld.intensity.value = bulgeAmount;
-
-            splitAmount = Mathf.MoveTowards(splitAmount, 0, Time.deltaTime * splitSpeed);
-            cs.amount.value = splitAmount * 2f;
+            if(ca)
+			{
+				chromaAmount = Mathf.MoveTowards(chromaAmount, 0, Time.deltaTime * chromaSpeed);
+				ca.intensity.value = chromaAmount * 0.7f;
+			}
+            
+            if(ld)
+			{
+				bulgeAmount = Mathf.MoveTowards(bulgeAmount, defaultLensDistortion, Time.deltaTime * bulgeSpeed);
+				ld.intensity.value = bulgeAmount;
+			}
+			
+			if(cs)
+			{
+				splitAmount = Mathf.MoveTowards(splitAmount, 0, Time.deltaTime * splitSpeed);
+				cs.amount.value = splitAmount * 2f;
+			}
         }
 
         Time.timeScale = Mathf.MoveTowards(Time.timeScale, 1f, Time.unscaledDeltaTime);
@@ -58,11 +67,11 @@ public class EffectCamera : MonoBehaviour {
         if (shakeTime > 0f)
         {
             shakeTime -= Time.deltaTime;
-            virtualCamera.position = transform.position + new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
+            transform.position = transform.position + new Vector3(Random.Range(-shakeAmount, shakeAmount), Random.Range(-shakeAmount, shakeAmount), 0);
         }
         else
         {
-            virtualCamera.position = originalPos;
+			transform.position = Vector3.MoveTowards(originalPos, originalPos, Time.deltaTime);
         }
     }
 
@@ -87,10 +96,10 @@ public class EffectCamera : MonoBehaviour {
 
 	public void BaseEffect(float mod = 1f) {
         //impulseSource.GenerateImpulse(Vector3.one * mod * 1000f);
-        Shake(0.5f * mod, 0.6f * mod);
-        Chromate(1.5f * mod, 2f * mod);
-        //Bulge(defaultLensDistortion * 1.1f * mod, 50f * mod);
+        Shake(0.5f * mod, 0.8f * mod);
+        Chromate(2f * mod, 2f * mod);
+		Bulge(defaultLensDistortion * 2f * mod, 50f * mod);
 
-        //Time.timeScale = Mathf.Clamp(1f - 0.2f * mod, 0f, 1f);
-    }
+		//Time.timeScale = Mathf.Clamp(1f - 0.2f * mod, 0f, 1f);
+	}
 }

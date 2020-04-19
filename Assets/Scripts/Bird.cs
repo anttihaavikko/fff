@@ -8,8 +8,9 @@ public class Bird : MonoBehaviour
     public Flock flock;
     public Rigidbody2D body;
     public Rigidbody2D poopPrefab;
+	public EffectCamera cam;
 
-    private string id;
+	private string id;
     private bool canBoost = true;
     private float speedMod = 1f;
 
@@ -145,7 +146,9 @@ public class Bird : MonoBehaviour
 
             EffectManager.Instance.AddEffect(4, t.position);
 
-            canBoost = true;
+			cam.BaseEffect(0.15f);
+
+			canBoost = true;
         }
     }
 
@@ -166,6 +169,8 @@ public class Bird : MonoBehaviour
             EffectManager.Instance.AddEffect(2, transform.position);
 
             EffectManager.Instance.AddEffect(3, transform.position);
+
+			cam.BaseEffect(0.5f);
 
             flock.RemoveBird(this);
             Destroy(gameObject);
