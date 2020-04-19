@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SoundEffect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NameInput.cs">
     <Files>
-      <File FileName="Assets/Scripts/Flock.cs" Line="272" Column="34" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="344" Column="70" />
       <File FileName="Assets/Scripts/GameButton.cs" Line="47" Column="9" />
-      <File FileName="Assets/Scripts/NameInput.cs" />
+      <File FileName="Assets/Scripts/NameInput.cs" Line="59" Column="82" />
       <File FileName="Assets/Scripts/ScoreManager.cs" Line="112" Column="34" />
       <File FileName="Assets/Scripts/StarView.cs" Line="13" Column="53" />
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="74" Column="86" />
       <File FileName="Assets/Scripts/Bird.cs" Line="208" Column="27" />
       <File FileName="Assets/Scripts/Slime.cs" Line="99" Column="1" />
-      <File FileName="Assets/Scripts/Appearer.cs" Line="40" Column="9" />
-      <File FileName="Assets/Scripts/Blinders.cs" Line="51" Column="70" />
+      <File FileName="Assets/Scripts/Appearer.cs" Line="28" Column="10" />
+      <File FileName="Assets/Scripts/Blinders.cs" Line="59" Column="6" />
       <File FileName="Assets/Scripts/AudioManager.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/SoundEffect.cs" Line="1" Column="1" />
     </Files>
@@ -20,7 +20,7 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="SoundEffect.cs" selected="True" />
+                <Node name="NameInput.cs" selected="True" />
               </Node>
             </Node>
           </Node>
