@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StarView : MonoBehaviour
 {
@@ -17,5 +18,10 @@ public class StarView : MonoBehaviour
     {
         names.text = ScoreManager.Instance.leaderBoardPositionsString;
         scores.text = ScoreManager.Instance.leaderBoardScoresString;
+
+        if(Input.anyKeyDown)
+        {
+            SceneManager.LoadSceneAsync("Main");
+        }
     }
 }

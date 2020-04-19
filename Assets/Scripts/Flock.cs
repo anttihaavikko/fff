@@ -24,6 +24,7 @@ public class Flock : MonoBehaviour
     private bool warnedMonster, toldBoost, hasBoosted;
     private int eats;
     private int monsterCount = 1;
+    private bool canRestart;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,23 @@ public class Flock : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && Application.isEditor)
         {
             SceneManager.LoadScene("Main");
+        }
+
+        if(canRestart)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                canRestart = false;
+                SceneManager.LoadSceneAsync("Start");
+                return;
+            }
+
+            if (Input.anyKeyDown)
+            {
+                canRestart = false;
+                SceneManager.LoadSceneAsync("Main");
+                return;
+            }
         }
 
         var scrollSpeed = Mathf.Max(20f, score - shownScore);
@@ -217,6 +235,7 @@ public class Flock : MonoBehaviour
     void Uploaded()
     {
         ShowHelp("<size=25>SCORE UPLOADED!</size>\n\n<size=18>PRESS ANY KEY TO GO AGAIN!</size>");
+        canRestart = true;
     }
 
     public List<Bird> GetBirds()
