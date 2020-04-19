@@ -17,6 +17,7 @@ public class Flock : MonoBehaviour
     public NameInput nameInput;
     public GameButton sendbutton, againButton, menuButton;
     public EffectCamera effectCamera;
+    public GameObject cursor;
 
     private Camera cam;
     private List<Bird> birds;
@@ -43,6 +44,14 @@ public class Flock : MonoBehaviour
 
         Invoke("ShowIntro", 3f);
         Invoke("ShowEatHelp", 8f);
+
+        UseCursor(true);
+    }
+
+    void UseCursor(bool state)
+    {
+        cursor.SetActive(state);
+        Cursor.visible = !state;
     }
 
     void ShowIntro()
@@ -66,6 +75,8 @@ public class Flock : MonoBehaviour
 
         if((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !dead)
         {
+            UseCursor(true);
+
             hasBoosted = true;
 
             var boostCount = birds.Count(b => b.CanBoost());
@@ -222,6 +233,8 @@ public class Flock : MonoBehaviour
 
     void GameOver()
     {
+        UseCursor(false);
+
         dead = true;
 
         CancelInvoke("CheckForEnd");

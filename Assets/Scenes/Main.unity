@@ -333,6 +333,8 @@ GameObject:
   m_Component:
   - component: {fileID: 161351926}
   - component: {fileID: 161351927}
+  - component: {fileID: 161351929}
+  - component: {fileID: 161351928}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -348,8 +350,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161351925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalScale: {x: 0.32508, y: 0.32508, z: 0.32508}
   m_Children: []
   m_Father: {fileID: 1038607657}
   m_RootOrder: 0
@@ -388,11 +390,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4844f34bdb54242f1a7bb5882ada20d9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
+  m_SortingLayerID: -1276213881
+  m_SortingLayer: 5
+  m_SortingOrder: 9999
+  m_Sprite: {fileID: 21300000, guid: 6e6925e7c24894b1e81ce418f3c06972, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -402,6 +404,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &161351928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161351925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f259d89b3b1466da0419ad9db2b81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: -1
+--- !u!114 &161351929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161351925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb21e53e3fe340c9b9ce0b28eb02518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.01
+  speed: 5
+  oneSided: 0
+  ratio: {x: 1, y: 1, z: 1}
 --- !u!1 &229209774
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2315,7 @@ MonoBehaviour:
   againButton: {fileID: 6693969}
   menuButton: {fileID: 723655700}
   effectCamera: {fileID: 519420034}
+  cursor: {fileID: 161351925}
 --- !u!114 &1038607659
 MonoBehaviour:
   m_ObjectHideFlags: 0
