@@ -20,6 +20,7 @@ public class EffectCamera : MonoBehaviour {
     private float bulgeSpeed;
 	private float chromaSpeed = 1f;
     private float splitSpeed = 1f;
+    private float moveSpeedMod = 1f;
 
     private float shakeAmount = 0f, shakeTime = 0f;
 
@@ -51,6 +52,7 @@ public class EffectCamera : MonoBehaviour {
             if(flock.GetBirds().Count == 0)
             {
                 desiredPos = originalPos;
+                moveSpeedMod = 10f;
             }
 		}
 
@@ -85,7 +87,7 @@ public class EffectCamera : MonoBehaviour {
         }
         else
         {
-			transform.position = Vector3.MoveTowards(transform.position, desiredPos, Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, desiredPos, Time.deltaTime * moveSpeedMod);
         }
     }
 
