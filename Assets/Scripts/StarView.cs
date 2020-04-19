@@ -19,6 +19,12 @@ public class StarView : MonoBehaviour
         names.text = ScoreManager.Instance.leaderBoardPositionsString;
         scores.text = ScoreManager.Instance.leaderBoardScoresString;
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+            return;
+        }
+
         if(Input.anyKeyDown)
         {
             SceneChanger.Instance.ChangeScene("Main");
