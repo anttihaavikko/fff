@@ -50,7 +50,34 @@ MonoBehaviour:
   volume: 0.5
   effectPrefab: {fileID: 114852473009967456, guid: 3d15b96e9a8fd4b68902e126f7cce22b,
     type: 3}
-  effects: []
+  effects:
+  - {fileID: 8300000, guid: 083974bc3f03e48e4a27fa8c3f86abf5, type: 3}
+  - {fileID: 8300000, guid: 8f2c3a6cf295d4933a2c1ce8c68c17c6, type: 3}
+  - {fileID: 8300000, guid: b5815e5a6d4ed470da11eba4bab9653c, type: 3}
+  - {fileID: 8300000, guid: eb1de61affd40441ba9bf06acf12852b, type: 3}
+  - {fileID: 8300000, guid: 6a20003931af745f299d6bc1a65b62a5, type: 3}
+  - {fileID: 8300000, guid: addedf3c750c84c7aaae0695dcd7c133, type: 3}
+  - {fileID: 8300000, guid: 5f2b51512941e457f83109520120a2d0, type: 3}
+  - {fileID: 8300000, guid: 6ea4dc901874d4db6b1e950bd5e9eabb, type: 3}
+  - {fileID: 8300000, guid: 3feac1724803b41bd96ac24c4186692c, type: 3}
+  - {fileID: 8300000, guid: 5582efb48322c439098848941154a0db, type: 3}
+  - {fileID: 8300000, guid: ca911b12c143e4f08bd2d6bbf744d7b2, type: 3}
+  - {fileID: 8300000, guid: ab490519e8fa548b188a9f2d763240bf, type: 3}
+  - {fileID: 8300000, guid: 3de70d65ba44c41eaaa5486d48af9da7, type: 3}
+  - {fileID: 8300000, guid: 06784190b5b88473588af23cd7c76972, type: 3}
+  - {fileID: 8300000, guid: 79f399413f1924c74b4d35bacf1ff5ca, type: 3}
+  - {fileID: 8300000, guid: 84cce1a6ccdb14f1e81b2335bfea4d52, type: 3}
+  - {fileID: 8300000, guid: 1739b559ded594fd698a25117831f227, type: 3}
+  - {fileID: 8300000, guid: 4d0b19abd922d4fcab058edb784114a1, type: 3}
+  - {fileID: 8300000, guid: 31e45fd821e6049a7ab612b97c08678b, type: 3}
+  - {fileID: 8300000, guid: 6a7f9710173a140cab69cdddce221c83, type: 3}
+  - {fileID: 8300000, guid: 1d42ab921183947498750be4b6151552, type: 3}
+  - {fileID: 8300000, guid: d6f24705bb17840888ae57babfbe498e, type: 3}
+  - {fileID: 8300000, guid: a0cfcc25e55fb4359b9fab6f2507956c, type: 3}
+  - {fileID: 8300000, guid: b1f0036710ace4b48b1fbb3b715f4783, type: 3}
+  - {fileID: 8300000, guid: 684ef2c0221724abbb9c3c0442081e02, type: 3}
+  - {fileID: 8300000, guid: 0ac708291f402457a800dda8a5177a33, type: 3}
+  - {fileID: 8300000, guid: 046487022f57f427086e80a85fd93514, type: 3}
   lowpass: {fileID: 5406127599781613689}
   highpass: {fileID: 5406127599781613688}
 --- !u!1 &5406127599781615493

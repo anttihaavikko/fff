@@ -30,7 +30,13 @@ public class StarView : MonoBehaviour
 
         if(Input.anyKeyDown && !moreButton.IsHovered())
         {
-			SceneChanger.Instance.ChangeScene("Main");
+            AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 0.713f);
+            AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.081f);
+            AudioManager.Instance.PlayEffectAt(15, Vector3.zero, 1f);
+            AudioManager.Instance.PlayEffectAt(20, Vector3.zero, 0.251f);
+            AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.332f);
+
+            SceneChanger.Instance.ChangeScene("Main");
 		}
     }
 

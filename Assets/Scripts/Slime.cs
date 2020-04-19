@@ -90,9 +90,16 @@ public class Slime : MonoBehaviour {
 		first.GetComponent<HingeJoint2D> ().connectedBody = prev;
 
 		UpdateMesh ();
-	}
 
-	private void UpdateVerts() {
+        AudioManager.Instance.PlayEffectAt(0, transform.position, 1.782f);
+        AudioManager.Instance.PlayEffectAt(5, transform.position, 1.36f);
+        AudioManager.Instance.PlayEffectAt(8, transform.position, 1.166f);
+        AudioManager.Instance.PlayEffectAt(11, transform.position, 1.255f);
+        AudioManager.Instance.PlayEffectAt(19, transform.position, 1.004f);
+
+    }
+
+    private void UpdateVerts() {
 		for (int i = 0; i < points; i++) {
 			vertices [i] = nodes [i].localPosition + nodes [i].rotation * (Vector3.right * 0.5f);
 			shineVertices [i] = Vector3.MoveTowards(nodes [i].transform.localPosition, controlNode.transform.localPosition, shineDistance);

@@ -98,7 +98,7 @@ public class Flock : MonoBehaviour
             //    return;
             //}
 
-            ShowHelp("<size=25>SCORE UPLOADED!</size>\n<size=15>" + ScoreManager.Instance.GetRank() + "</size>");
+            ShowHelp("<size=25>SCORE UPLOADED!</size>\n<size=15>" + ScoreManager.Instance.GetRank() + "</size>", 0, true);
         }
 
         var scrollSpeed = Mathf.Max(20f, score - shownScore);
@@ -261,6 +261,9 @@ public class Flock : MonoBehaviour
 
     void Uploaded()
     {
+        if (canRestart)
+            return;
+
         againButton.appearer.Show();
         menuButton.appearer.Show();
 
@@ -313,7 +316,7 @@ public class Flock : MonoBehaviour
         monsterCount++;
     }
 
-    void ShowHelp(string help, float hideAfter = 0f)
+    void ShowHelp(string help, float hideAfter = 0f, bool silent = false)
     {
         helpText.text = help;
         Tweener.Instance.ScaleTo(helpText.transform, Vector3.one, 0.3f, 0f, TweenEasings.BounceEaseOut);
@@ -323,10 +326,21 @@ public class Flock : MonoBehaviour
             CancelInvoke("HideHelp");
             Invoke("HideHelp", hideAfter);
         }
+
+        if (!silent)
+        {
+            AudioManager.Instance.PlayEffectAt(23, Vector3.zero, 1.223f);
+            AudioManager.Instance.PlayEffectAt(26, Vector3.zero, 1.296f);
+            AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 1.158f);
+        }
     }
 
     void HideHelp()
     {
         Tweener.Instance.ScaleTo(helpText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
+
+        AudioManager.Instance.PlayEffectAt(23, Vector3.zero, 1.223f);
+        AudioManager.Instance.PlayEffectAt(26, Vector3.zero, 1.296f);
+        AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 1.158f);
     }
 }

@@ -44,11 +44,12 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         AudioManager.Instance.Lowpass(false);
         AudioManager.Instance.Highpass(false);
 
-        //AudioManager.Instance.PlayEffectAt(2, transform.position, 1f);
-        //AudioManager.Instance.PlayEffectAt(3, transform.position, 1f);
-        //AudioManager.Instance.PlayEffectAt(5, transform.position, 1f);
-        //AudioManager.Instance.PlayEffectAt(0, transform.position, 1f);
-        //AudioManager.Instance.PlayEffectAt(14, transform.position, 1f);
+        AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 0.713f);
+        AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.081f);
+        AudioManager.Instance.PlayEffectAt(15, Vector3.zero, 1f);
+        AudioManager.Instance.PlayEffectAt(20, Vector3.zero, 0.251f);
+        AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.332f);
+
     }
 
     void RemoveHover()
@@ -71,9 +72,9 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             text.color = hoverColor;
         }
 
-        //AudioManager.Instance.PlayEffectAt(3, transform.position, 0.495f);
-        //AudioManager.Instance.PlayEffectAt(9, transform.position, 1.229f);
-        //AudioManager.Instance.PlayEffectAt(14, transform.position, 0.271f);
+        AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.267f);
+        AudioManager.Instance.PlayEffectAt(19, Vector3.zero, 0.534f);
+        AudioManager.Instance.PlayEffectAt(17, Vector3.zero, 0.785f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -91,9 +92,9 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             text.color = normalColor;
         }
 
-        //AudioManager.Instance.PlayEffectAt(3, transform.position, 0.495f);
-        //AudioManager.Instance.PlayEffectAt(9, transform.position, 1.229f);
-        //AudioManager.Instance.PlayEffectAt(17, transform.position, 0.502f);
+        AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.267f);
+        AudioManager.Instance.PlayEffectAt(19, Vector3.zero, 0.534f);
+        AudioManager.Instance.PlayEffectAt(17, Vector3.zero, 0.785f);
     }
 
     public bool IsHovered()

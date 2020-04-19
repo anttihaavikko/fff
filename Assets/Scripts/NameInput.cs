@@ -48,7 +48,15 @@ public class NameInput : MonoBehaviour {
                 {
                     playerName = playerName.Substring(0, playerName.Length - 1);
                     TriggerUpdate();
-                    //AudioManager.Instance.PlayEffectAt(14, Vector3.zero, 0.75f);
+
+                    AudioManager.Instance.PlayEffectAt(19, Vector3.zero, 0.267f);
+                    AudioManager.Instance.PlayEffectAt(20, Vector3.zero, 0.227f);
+                    AudioManager.Instance.PlayEffectAt(23, Vector3.zero, 1.174f);
+                }
+                else
+                {
+                    AudioManager.Instance.PlayEffectAt(18, Vector3.zero, 0.526f);
+                    AudioManager.Instance.PlayEffectAt(17, Vector3.zero, 0.972f);
                 }
 
             }
@@ -65,13 +73,17 @@ public class NameInput : MonoBehaviour {
 
                     if (playerName != "")
                     {
-						//AudioManager.Instance.PlayEffectAt(0, Vector3.zero, 0.75f);
-						TriggerUpdate();
+                        AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.478f);
+                        AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 1f);
+                        AudioManager.Instance.PlayEffectAt(15, Vector3.zero, 1.474f);
+
+                        TriggerUpdate();
 						asking = false;
                         onDone?.Invoke(playerName);
                         PlayerPrefs.SetString("PlayerName", playerName);
                     } else {
-                        //AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.5f);
+                        AudioManager.Instance.PlayEffectAt(18, Vector3.zero, 0.526f);
+                        AudioManager.Instance.PlayEffectAt(17, Vector3.zero, 0.972f);
                     }
 
                 }
@@ -81,7 +93,11 @@ public class NameInput : MonoBehaviour {
                     {
                         playerName += c.ToString().ToUpper();
                         TriggerUpdate();
-                        //AudioManager.Instance.PlayEffectAt(15, Vector3.zero, 0.5f);
+
+                        AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.478f);
+                        AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 1f);
+                        AudioManager.Instance.PlayEffectAt(15, Vector3.zero, 1.474f);
+
                     }
                 }
 
