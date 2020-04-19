@@ -173,8 +173,8 @@ public class Flock : MonoBehaviour
 
     void CheckForEnd()
     {
-        Debug.Log("CheckForEnd");
         CancelInvoke("CheckForEnd");
+        CancelInvoke("GameOver");
 
         if (birds.Count == 0)
         {

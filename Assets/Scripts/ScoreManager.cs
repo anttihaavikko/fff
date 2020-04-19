@@ -126,7 +126,9 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	IEnumerator DoFindPlayerRank() {
-		WWW www = new WWW ("http://games.sahaqiel.com/leaderboards/get-rank.php?score=" + score + "&name=" + playerName + "&pid=" + SystemInfo.deviceUniqueIdentifier + "&game=" + gameName);
+        var url = "http://games.sahaqiel.com/leaderboards/get-rank.php?score=" + score + "&name=" + playerName + "&pid=" + SystemInfo.deviceUniqueIdentifier + "&game=" + gameName;
+        Debug.Log(url);
+        WWW www = new WWW (url);
 
 		yield return www;
 
@@ -144,7 +146,7 @@ public class ScoreManager : MonoBehaviour {
 		string row = "";
 
 		if (nam == playerName && pos > 0 && pid == SystemInfo.deviceUniqueIdentifier) {
-			row += "<color=#ffff00>";
+			row += "<color=#F71735>";
 		}
 		
 		row += (pos > 0) ? pos.ToString() : "?";
@@ -200,6 +202,8 @@ public class ScoreManager : MonoBehaviour {
 		data += "," + score;
 		data += "," + check;
         data += "," + gameName;
+
+        //Debug.Log(data);
 
         WWW www = new WWW (webURL + data);
 
