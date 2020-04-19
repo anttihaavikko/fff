@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Lurker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ScoreManager.cs">
     <Files>
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="97" Column="1" />
       <File FileName="Assets/Scripts/Bird.cs" Line="150" Column="6" />
-      <File FileName="Assets/Scripts/Flock.cs" Line="94" Column="49" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="210" Column="109" />
       <File FileName="Assets/Scripts/MapGenerator.cs" Line="12" Column="28" />
       <File FileName="Assets/Scripts/MeshGenerator.cs" Line="412" Column="43" />
       <File FileName="Assets/Scripts/Slime.cs" Line="46" Column="26" />
@@ -13,7 +13,9 @@
       <File FileName="Assets/Scripts/Poop.cs" Line="22" Column="62" />
       <File FileName="Assets/Scripts/RandomRotation.cs" Line="11" Column="6" />
       <File FileName="Assets/Scripts/RandomAnimSpeed.cs" Line="13" Column="6" />
-      <File FileName="Assets/Scripts/Lurker.cs" Line="11" Column="6" />
+      <File FileName="Assets/Scripts/Lurker.cs" Line="29" Column="6" />
+      <File FileName="Assets/Scripts/ScoreManager.cs" Line="210" Column="31" />
+      <File FileName="Assets/Scripts/NameInput.cs" Line="87" Column="64" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +23,7 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Lurker.cs" selected="True" />
+                <Node name="ScoreManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>

@@ -27,8 +27,6 @@ public class Lurker : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hit by " + collision.gameObject.name);
-
         if(collision.gameObject.tag == "Poop")
         {
             face.Emote(Face.Emotion.Sad, Face.Emotion.Default, 2f);

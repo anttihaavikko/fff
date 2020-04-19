@@ -10,10 +10,11 @@ public class Flock : MonoBehaviour
     public Bird birdPrefab;
     public LayerMask wallMask;
     public Slime monster;
-    public TMPro.TMP_Text scoreText, multiText, scoreAddText, helpText;
+    public TMPro.TMP_Text scoreText, multiText, scoreAddText, helpText, nameText;
     public Transform pickup;
     public Slime monsterPrefab;
     public int eatLimit = 25;
+    public NameInput nameInput;
 
     private Camera cam;
     private List<Bird> birds;
@@ -66,11 +67,6 @@ public class Flock : MonoBehaviour
 
             if (toldBoost)
                 HideHelp();
-        }
-
-        if(Input.GetKeyDown(KeyCode.A) && Application.isEditor)
-        {
-            AddBird();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && Application.isEditor)
@@ -172,15 +168,55 @@ public class Flock : MonoBehaviour
         multi = 1;
         multiText.text = "x" + multi;
 
-        if(birds.Count == 0)
+        CheckForEnd();
+    }
+
+    void CheckForEnd()
+    {
+        Debug.Log("CheckForEnd");
+        CancelInvoke("CheckForEnd");
+
+        if (birds.Count == 0)
         {
             Invoke("GameOver", 1f);
+            return;
         }
+
+        Invoke("CheckForEnd", 2f);
     }
 
     void GameOver()
     {
-        ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>");
+        CancelInvoke("CheckForEnd");
+        UpdateInputs("");
+
+        ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>\n<size=20>PLEASE ENTER NAME...</size>\n<size=30> </size>");
+
+        nameInput.Ask();
+        nameInput.onUpdate += UpdateInputs;
+        nameInput.onDone += SubmitScore;
+
+        Tweener.Instance.ScaleTo(nameText.transform, Vector3.one, 0.3f, 0f, TweenEasings.BounceEaseOut);
+        
+    }
+
+    void UpdateInputs(string plrName)
+    {
+        nameText.text = plrName;
+    }
+
+    void SubmitScore(string plrName)
+    {
+        Tweener.Instance.ScaleTo(nameText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
+        ShowHelp("<size=25>UPLOADING SCORE...</size>");
+
+        ScoreManager.Instance.onUploaded += Uploaded;
+        ScoreManager.Instance.SubmitScore(plrName, score, eats);
+    }
+
+    void Uploaded()
+    {
+        ShowHelp("<size=25>SCORE UPLOADED!</size>\n\n<size=18>PRESS ANY KEY TO GO AGAIN!</size>");
     }
 
     public List<Bird> GetBirds()
