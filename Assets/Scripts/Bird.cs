@@ -191,6 +191,11 @@ public class Bird : MonoBehaviour
         }
     }
 
+    public bool CanBoost()
+    {
+        return canBoost;
+    }
+
     public void Boost()
     {
         if(canBoost)

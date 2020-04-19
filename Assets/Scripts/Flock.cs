@@ -66,6 +66,11 @@ public class Flock : MonoBehaviour
         if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             hasBoosted = true;
+
+            var boostCount = birds.Count(b => b.CanBoost());
+
+            effectCamera.BaseEffect(Mathf.Min(boostCount * 0.03f, 0.5f));
+
             birds.ForEach(b => b.Boost());
 
             if (toldBoost)
