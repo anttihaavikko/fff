@@ -177,12 +177,12 @@ public class Bird : MonoBehaviour
 
             EffectManager.Instance.AddEffect(3, transform.position);
 
-            AudioManager.Instance.PlayEffectAt(4, transform.position, 1.433f * 0.8f);
-            AudioManager.Instance.PlayEffectAt(12, transform.position, 1.53f * 0.8f);
-            AudioManager.Instance.PlayEffectAt(13, transform.position, 1.538f * 0.8f);
-            AudioManager.Instance.PlayEffectAt(10, transform.position, 1.676f * 0.8f);
-            AudioManager.Instance.PlayEffectAt(14, transform.position, 1.781f * 0.8f);
-            AudioManager.Instance.PlayEffectAt(16, transform.position, 1.53f * 0.8f);
+            AudioManager.Instance.PlayEffectAt(4, transform.position, 1.433f * 0.8f, true, 160);
+            AudioManager.Instance.PlayEffectAt(12, transform.position, 1.53f * 0.8f, true, 160);
+            AudioManager.Instance.PlayEffectAt(13, transform.position, 1.538f * 0.8f, true, 160);
+            AudioManager.Instance.PlayEffectAt(10, transform.position, 1.676f * 0.8f, true, 160);
+            AudioManager.Instance.PlayEffectAt(14, transform.position, 1.781f * 0.8f, true, 160);
+            AudioManager.Instance.PlayEffectAt(16, transform.position, 1.53f * 0.8f, true, 160);
 
             cam.BaseEffect(0.5f);
 
@@ -220,12 +220,12 @@ public class Bird : MonoBehaviour
     {
         if(canBoost)
         {
-            AudioManager.Instance.PlayEffectAt(2, transform.position, 1f);
-            AudioManager.Instance.PlayEffectAt(5, transform.position, 1.36f);
-            AudioManager.Instance.PlayEffectAt(10, transform.position, 1.15f);
-            AudioManager.Instance.PlayEffectAt(15, transform.position, 1.174f);
-            AudioManager.Instance.PlayEffectAt(24, transform.position, 0.599f);
-            AudioManager.Instance.PlayEffectAt(25, transform.position, 1.271f);
+            AudioManager.Instance.PlayEffectAt(2, transform.position, 1f, true, 200);
+            AudioManager.Instance.PlayEffectAt(5, transform.position, 1.36f, true, 200);
+            AudioManager.Instance.PlayEffectAt(10, transform.position, 1.15f, true, 200);
+            AudioManager.Instance.PlayEffectAt(15, transform.position, 1.174f, true, 200);
+            AudioManager.Instance.PlayEffectAt(24, transform.position, 0.599f, true, 200);
+            AudioManager.Instance.PlayEffectAt(25, transform.position, 1.271f, true, 200);
 
             canBoost = false;
             speedMod = 2f;

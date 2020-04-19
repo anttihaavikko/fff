@@ -102,22 +102,23 @@ public class AudioManager : MonoBehaviour {
 		highpass.cutoffFrequency = Mathf.MoveTowards (highpass.cutoffFrequency, targetHighpass, 50f * changeSpeed);
 	}
 
-	public void PlayEffectAt(AudioClip clip, Vector3 pos, float volume, bool pitchShift = true) {
+	public void PlayEffectAt(AudioClip clip, Vector3 pos, float volume, bool pitchShift = true, int priority = 128) {
 		SoundEffect se = Instantiate (effectPrefab, pos, Quaternion.identity);
 		se.Play (clip, volume, pitchShift);
 		se.transform.parent = transform;
+        se.audioSource.priority = priority;
+    }
+
+	public void PlayEffectAt(AudioClip clip, Vector3 pos, bool pitchShift = true, int priority = 128) {
+		PlayEffectAt (clip, pos, 1f, pitchShift, priority);
 	}
 
-	public void PlayEffectAt(AudioClip clip, Vector3 pos, bool pitchShift = true) {
-		PlayEffectAt (clip, pos, 1f, pitchShift);
+	public void PlayEffectAt(int effect, Vector3 pos, bool pitchShift = true, int priority = 128) {
+		PlayEffectAt (effects [effect], pos, 1f, pitchShift, priority);
 	}
 
-	public void PlayEffectAt(int effect, Vector3 pos, bool pitchShift = true) {
-		PlayEffectAt (effects [effect], pos, 1f, pitchShift);
-	}
-
-	public void PlayEffectAt(int effect, Vector3 pos, float volume, bool pitchShift = true) {
-		PlayEffectAt (effects [effect], pos, volume, pitchShift);
+	public void PlayEffectAt(int effect, Vector3 pos, float volume, bool pitchShift = true, int priority = 128) {
+		PlayEffectAt (effects [effect], pos, volume, pitchShift, priority);
 	}
 
 	public void ChangeMusicVolume(float vol) {
