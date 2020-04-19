@@ -189,6 +189,8 @@ public class Bird : MonoBehaviour
             flock.RemoveBird(this);
             Destroy(gameObject);
 
+            AudioManager.Instance.curMusic.pitch = 0.8f;
+
             var monster = collision.gameObject.GetComponentInParent<Slime>();
 
             monster.actualFace.Emote(Face.Emotion.Angry, Face.Emotion.Sneaky, 1f);
