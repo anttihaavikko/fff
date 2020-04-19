@@ -1511,6 +1511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flock: {fileID: 1038607658}
+  lens: {fileID: 519420031}
   brain: {fileID: 0}
 --- !u!1 &530252868
 GameObject:

@@ -1275,6 +1275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2961a5bb7c04a482195cfd8b6334b293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flock: {fileID: 0}
+  lens: {fileID: 425221793}
   brain: {fileID: 0}
 --- !u!114 &425221790
 MonoBehaviour:

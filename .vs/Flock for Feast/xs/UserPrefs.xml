@@ -3,10 +3,10 @@
     <Files>
       <File FileName="Assets/Scripts/GameButton.cs" Line="87" Column="1" />
       <File FileName="Assets/Scripts/StarView.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Bird.cs" Line="192" Column="13" />
-      <File FileName="Assets/Scripts/AudioManager.cs" Line="100" Column="72" />
-      <File FileName="Assets/Scripts/Flock.cs" Line="65" Column="6" />
-      <File FileName="Assets/Scripts/EffectCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Bird.cs" Line="15" Column="33" />
+      <File FileName="Assets/Scripts/AudioManager.cs" Line="108" Column="35" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="76" Column="31" />
+      <File FileName="Assets/Scripts/EffectCamera.cs" Line="60" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

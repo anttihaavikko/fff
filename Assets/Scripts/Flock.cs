@@ -56,9 +56,27 @@ public class Flock : MonoBehaviour
 
         birds.ForEach(b => p += b.transform.position);
 
-        var count = 1 + birds.Count;
+        p += pickup.transform.position;
+
+        var count = 2 + birds.Count;
 
         return p / count;
+    }
+
+    public float GetMaxDistance()
+    {
+        var d = 0f;
+        birds.ForEach(b => {
+            var dist = (transform.position - b.transform.position).magnitude;
+            if (dist > d)
+                d = dist;
+        });
+
+        var pickupDist = (transform.position - pickup.transform.position).magnitude;
+        if (pickupDist > d)
+            d = pickupDist;
+
+        return d;
     }
 
     void UseCursor(bool state)

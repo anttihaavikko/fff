@@ -6,6 +6,7 @@ using UnityEngine.Rendering.PostProcessing;
 public class EffectCamera : MonoBehaviour {
 
 	public Flock flock;
+    public Camera lens;
 
     private static readonly float defaultLensDistortion = 20f;
 
@@ -29,6 +30,7 @@ public class EffectCamera : MonoBehaviour {
     private ChromaticAberration ca;
     private LensDistortion ld;
     private ColorSplit cs;
+    private float targetOrtho;
 
     public Cinemachine.CinemachineBrain brain;
 
@@ -39,8 +41,8 @@ public class EffectCamera : MonoBehaviour {
         ppVolume.profile.TryGetSettings(out cs);
 
 		originalPos = desiredPos = transform.position;
-
-	}
+        targetOrtho = lens.orthographicSize;
+    }
 
 	void Update() {
 
@@ -49,10 +51,14 @@ public class EffectCamera : MonoBehaviour {
             var focus = flock.GetFocusPoint();
             desiredPos = new Vector3(focus.x, focus.y, desiredPos.z);
 
+            var dist = flock.GetMaxDistance();
+            targetOrtho = Mathf.Clamp(dist, 8, 13);
+
             if(flock.GetBirds().Count == 0)
             {
                 desiredPos = originalPos;
-                moveSpeedMod = 10f;
+                moveSpeedMod = 1.5f;
+                targetOrtho = 12;
             }
 		}
 
@@ -87,7 +93,8 @@ public class EffectCamera : MonoBehaviour {
         }
         else
         {
-			transform.position = Vector3.MoveTowards(transform.position, desiredPos, Time.deltaTime * moveSpeedMod);
+			transform.position = Vector3.MoveTowards(transform.position, desiredPos, Time.deltaTime * moveSpeedMod * 3f);
+            lens.orthographicSize = Mathf.MoveTowards(lens.orthographicSize, targetOrtho, Time.deltaTime * moveSpeedMod * 3f);
         }
     }
 
