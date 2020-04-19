@@ -15,6 +15,7 @@ public class Flock : MonoBehaviour
     public Slime monsterPrefab;
     public int eatLimit = 25;
     public NameInput nameInput;
+    public GameButton sendbutton, againButton, menuButton;
 
     private Camera cam;
     private List<Bird> birds;
@@ -90,6 +91,8 @@ public class Flock : MonoBehaviour
                 SceneChanger.Instance.ChangeScene("Main");
                 return;
             }
+
+            ShowHelp("<size=25>SCORE UPLOADED!</size>\n<size=15>" + ScoreManager.Instance.GetRank() + "</size>");
         }
 
         var scrollSpeed = Mathf.Max(20f, score - shownScore);
@@ -203,12 +206,18 @@ public class Flock : MonoBehaviour
         Invoke("CheckForEnd", 2f);
     }
 
+    public void Send()
+    {
+        nameInput.MarkDoneAndGetName();
+        sendbutton.appearer.Hide();
+    }
+
     void GameOver()
     {
         CancelInvoke("CheckForEnd");
         UpdateInputs("");
 
-        ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>\n<size=20>PLEASE ENTER NAME...</size>\n<size=30> </size>");
+        ShowHelp("<size=45>GAME OVER</size>\n<size=15>FINAL SCORE</size>\n<size=30>" + FormatScore(score) + "</size>\n<size=20>PLEASE ENTER NAME...</size>\n<size=60> </size>");
 
         nameInput.Ask();
         nameInput.onUpdate += UpdateInputs;
@@ -221,6 +230,15 @@ public class Flock : MonoBehaviour
     void UpdateInputs(string plrName)
     {
         nameText.text = plrName;
+
+        if(plrName.Length > 1)
+        {
+            sendbutton.appearer.Show();
+        }
+        else
+        {
+            sendbutton.appearer.Hide();
+        }
     }
 
     void SubmitScore(string plrName)
@@ -234,7 +252,12 @@ public class Flock : MonoBehaviour
 
     void Uploaded()
     {
-        ShowHelp("<size=25>SCORE UPLOADED!</size>\n\n<size=18>PRESS ANY KEY TO GO AGAIN!</size>");
+        againButton.appearer.Show();
+        menuButton.appearer.Show();
+
+        ScoreManager.Instance.FindPlayerRank();
+
+        ShowHelp("<size=25>SCORE UPLOADED!</size>\n<size=15>" + ScoreManager.Instance.GetRank() + "</size>");
         canRestart = true;
     }
 

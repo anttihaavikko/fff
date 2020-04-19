@@ -20,6 +20,13 @@ public class NameInput : MonoBehaviour {
             playerName = PlayerPrefs.GetString("PlayerName").ToUpper();
         }
     }
+
+    public string MarkDoneAndGetName()
+	{
+		asking = false;
+		onDone?.Invoke(playerName);
+		return playerName;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,8 +65,9 @@ public class NameInput : MonoBehaviour {
 
                     if (playerName != "")
                     {
-                        //AudioManager.Instance.PlayEffectAt(0, Vector3.zero, 0.75f);
-                        asking = false;
+						//AudioManager.Instance.PlayEffectAt(0, Vector3.zero, 0.75f);
+						TriggerUpdate();
+						asking = false;
                         onDone?.Invoke(playerName);
                         PlayerPrefs.SetString("PlayerName", playerName);
                     } else {
@@ -90,6 +98,8 @@ public class NameInput : MonoBehaviour {
 
     void TriggerUpdate()
     {
+		if (!asking) return;
+
         nameInput = playerName + (showLine ? "\u25A1" : "\u25A0");
         onUpdate?.Invoke(nameInput);
     }

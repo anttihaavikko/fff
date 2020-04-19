@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tweener : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class Tweener : MonoBehaviour {
 			instance = this;
 		}
 
-		actions = new List<TweenAction> ();
+        actions = new List<TweenAction> ();
 	}
 
 	void Update() {
@@ -31,7 +32,38 @@ public class Tweener : MonoBehaviour {
 		}
 	}
 
-	private TweenAction AddTween(Transform obj, Vector3 target, TweenAction.Type type, float duration, float delay, System.Func<float, float> ease, int easeIndex = -1, bool removeOld = true) {
+    private TweenAction AddTween(Rigidbody2D obj, Vector3 target, TweenAction.Type type, float duration, float delay, System.Func<float, float> ease, int easeIndex = -1, bool removeOld = true)
+    {
+        // remove old ones of same object
+        if (removeOld)
+        {
+            for (int i = actions.Count - 1; i >= 0; i--)
+            {
+                if (actions[i].body == obj && actions[i].type == type)
+                {
+                    actions.RemoveAt(i);
+                }
+            }
+        }
+
+        TweenAction act = new TweenAction
+        {
+            type = type,
+            body = obj,
+            targetPos = target,
+            tweenPos = 0f,
+            tweenDuration = duration,
+            tweenDelay = delay,
+            customEasing = easeIndex
+        };
+        actions.Add(act);
+
+        act.easeFunction = ease;
+
+        return act;
+    }
+
+    private TweenAction AddTween(Transform obj, Vector3 target, TweenAction.Type type, float duration, float delay, System.Func<float, float> ease, int easeIndex = -1, bool removeOld = true) {
 		// remove old ones of same object
         if(removeOld)
         {
@@ -61,7 +93,33 @@ public class Tweener : MonoBehaviour {
 		return act;
 	}
 
-	public void MoveTo(Transform obj, Vector3 target, float duration, float delay, System.Func<float, float> ease = null, int easeIndex = -1, bool removeOld = true) {
+    public void MoveBodyTo(Rigidbody2D obj, Vector3 target, float duration, float delay, System.Func<float, float> ease = null, int easeIndex = -1, bool removeOld = true)
+    {
+
+        if (ease == null)
+        {
+            ease = TweenEasings.LinearInterpolation;
+        }
+
+        TweenAction act = AddTween(obj, target, TweenAction.Type.BodyPosition, duration, delay, ease, easeIndex, removeOld);
+        act.startPos = act.body.position;
+        StartCoroutine(act.SetBodyStartPos());
+    }
+
+    public void RotateBodyTo(Rigidbody2D obj, Quaternion rotation, float duration, float delay, System.Func<float, float> ease = null, int easeIndex = -1, bool removeOld = true)
+    {
+        if (ease == null)
+        {
+            ease = TweenEasings.LinearInterpolation;
+        }
+
+        TweenAction act = AddTween(obj, Vector3.zero, TweenAction.Type.BodyRotation, duration, delay, ease, easeIndex, removeOld);
+        act.startRot = act.body.transform.rotation;
+        act.targetRot = rotation;
+        StartCoroutine(act.SetBodyStartRot());
+    }
+
+    public void MoveTo(Transform obj, Vector3 target, float duration, float delay, System.Func<float, float> ease = null, int easeIndex = -1, bool removeOld = true) {
 
         if (ease == null) {
 			ease = TweenEasings.LinearInterpolation;
@@ -124,6 +182,20 @@ public class Tweener : MonoBehaviour {
 		act.sprite = obj;
 		act.startColor = act.sprite.color;
 		act.targetColor = color;
+        StartCoroutine(act.SetStartColor());
+    }
+
+    public void ColorTo(Image obj, Color color, float duration, float delay, System.Func<float, float> ease = null, int easeIndex = -1, bool removeOld = true)
+    {
+        if (ease == null)
+        {
+            ease = TweenEasings.LinearInterpolation;
+        }
+
+        TweenAction act = AddTween(obj.transform, Vector3.zero, TweenAction.Type.Color, duration, delay, ease, easeIndex, removeOld);
+        act.uiImage = obj;
+        act.startColor = act.uiImage.color;
+        act.targetColor = color;
         StartCoroutine(act.SetStartColor());
     }
 }

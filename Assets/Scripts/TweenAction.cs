@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TweenAction {
 	
@@ -9,11 +10,15 @@ public class TweenAction {
 		LocalPosition,
 		Rotation,
 		Scale,
-		Color
+		Color,
+        BodyPosition,
+        BodyRotation
 	};
 
 	public Transform theObject;
+    public Rigidbody2D body;
 	public SpriteRenderer sprite;
+    public Image uiImage;
 	public Vector3 startPos, targetPos;
 	public Quaternion startRot, targetRot;
 	public Color startColor, targetColor;
@@ -60,74 +65,107 @@ public class TweenAction {
     {
         yield return new WaitForSeconds(tweenDelay);
         hasBeenInit = true;
-        startPos = theObject.transform.position;
+        startPos = theObject.position;
+    }
+
+    public IEnumerator SetBodyStartPos()
+    {
+        yield return new WaitForSeconds(tweenDelay);
+        hasBeenInit = true;
+        startRot = body.transform.rotation;
+    }
+
+    public IEnumerator SetBodyStartRot()
+    {
+        yield return new WaitForSeconds(tweenDelay);
+        hasBeenInit = true;
+        startPos = body.position;
     }
 
     public IEnumerator SetStartLocalPos()
     {
         yield return new WaitForSeconds(tweenDelay);
         hasBeenInit = true;
-        startPos = theObject.transform.localPosition;
+        startPos = theObject.localPosition;
     }
 
     public IEnumerator SetStartRot()
     {
         yield return new WaitForSeconds(tweenDelay);
         hasBeenInit = true;
-        startRot = theObject.transform.rotation;
+        startRot = theObject.rotation;
     }
 
     public IEnumerator SetStartScale()
     {
         yield return new WaitForSeconds(tweenDelay);
         hasBeenInit = true;
-        startPos = theObject.transform.localScale;
+        if(theObject)
+            startPos = theObject.localScale;
     }
 
     public IEnumerator SetStartColor()
     {
         yield return new WaitForSeconds(tweenDelay);
         hasBeenInit = true;
-        startColor = sprite.color;
+
+        if(sprite)
+            startColor = sprite.color;
+
+        if (uiImage)
+            startColor = uiImage.color;
     }
 
     public bool Process() {
 
-		if (!theObject) {
+		if (!theObject && !body) {
 			return true;
 		}
 
         if (!hasBeenInit)
             return false;
 
-		if (tweenDelay > 0f) {
+        tweenPos += Time.deltaTime / tweenDuration;
 
-			tweenDelay -= Time.deltaTime;
+        if (type == Type.Position)
+        {
+            theObject.position = Lerp(startPos, targetPos, DoEase());
+        }
 
-		} else {
-			tweenPos += Time.deltaTime / tweenDuration;
+        if (type == Type.BodyPosition)
+        {
+            body.MovePosition(Lerp(startPos, targetPos, DoEase()));
+        }
 
-			if (type == Type.Position) {
-				theObject.position = Lerp (startPos, targetPos, DoEase ());
-			}
+        if (type == Type.BodyRotation)
+        {
+            body.MoveRotation(Lerp(startRot, targetRot, DoEase()));
+        }
 
-			if (type == Type.LocalPosition) {
-				theObject.localPosition = Lerp (startPos, targetPos, DoEase ());
-			}
+        if (type == Type.LocalPosition)
+        {
+            theObject.localPosition = Lerp(startPos, targetPos, DoEase());
+        }
 
-			if (type == Type.Rotation) {
-				theObject.rotation = Lerp (startRot, targetRot, DoEase ());
-			}
+        if (type == Type.Rotation)
+        {
+            theObject.rotation = Lerp(startRot, targetRot, DoEase());
+        }
 
-			if (type == Type.Scale) {
-				theObject.localScale = Lerp (startPos, targetPos, DoEase ());
-			}
+        if (type == Type.Scale)
+        {
+            theObject.localScale = Lerp(startPos, targetPos, DoEase());
+        }
 
-			if (type == Type.Color) {
-				sprite.color = Lerp (startColor, targetColor, DoEase ());
-			}
-		}
+        if (type == Type.Color)
+        {
+            if (sprite)
+                sprite.color = Lerp(startColor, targetColor, DoEase());
 
-		return (tweenPos >= 1f);
+            if (uiImage)
+                uiImage.color = Lerp(startColor, targetColor, DoEase());
+        }
+
+        return (tweenPos >= 1f);
 	}
 }

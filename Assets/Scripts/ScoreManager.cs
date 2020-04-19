@@ -265,4 +265,9 @@ public class ScoreManager : MonoBehaviour {
 		playerName = "";
 		score = 0;
 	}
+
+    public string GetRank()
+	{
+		return localRank > 0 ? "YOU RANKED <color=#FF9F1C>#" + localRank + "</color>" : "LOADING RANK...";
+	}
 }
