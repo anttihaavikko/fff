@@ -146,7 +146,7 @@ public class ScoreManager : MonoBehaviour {
 		string row = "";
 
 		if (nam == playerName && pos > 0 && pid == SystemInfo.deviceUniqueIdentifier) {
-			row += "<color=#F71735>";
+			row += "<color=#FF9F1C>";
 		}
 		
 		row += (pos > 0) ? pos.ToString() : "?";

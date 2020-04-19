@@ -44,12 +44,12 @@ public class Flock : MonoBehaviour
 
     void ShowIntro()
     {
-        ShowHelp("POINT WITH MOUSE\nTO MOVE AROUND", 4f);
+        ShowHelp("POINT WITH <color=#FF9F1C>MOUSE</color>\nTO <color=#FF9F1C>MOVE</color> AROUND", 4f);
     }
 
     void ShowEatHelp()
     {
-        ShowHelp("FIND FOOD\nTO REPRODUCE", 4f);
+        ShowHelp("FIND <color=#FF9F1C>FOOD</color>\nTO REPRODUCE", 4f);
     }
 
     // Update is called once per frame
@@ -138,14 +138,14 @@ public class Flock : MonoBehaviour
 
         if(score > 10 && !warnedMonster)
         {
-            ShowHelp("WATCH OUT FOR\nTHE BIG BADDIE!", 3f);
+            ShowHelp("WATCH OUT FOR\nTHE <color=#FF9F1C>BIG BADDIE</color>", 3f);
             monster.gameObject.SetActive(true);
             warnedMonster = true;
         }
 
         if (score > 250 && !toldBoost && !hasBoosted)
         {
-            ShowHelp("YOU CAN ALSO BOOST\nWITH MOUSE BUTTON", 3f);
+            ShowHelp("YOU CAN ALSO <color=#FF9F1C>BOOST</color>\nWITH <color=#FF9F1C>MOUSE BUTTON</color>", 3f);
             toldBoost = true;
         }
 
