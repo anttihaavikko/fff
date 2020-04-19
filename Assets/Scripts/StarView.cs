@@ -9,11 +9,18 @@ public class StarView : MonoBehaviour
 	public GameButton moreButton, quitButton;
 
 	private int page;
+    private bool canTransition;
 
     // Start is called before the first frame update
     void Start()
     {
         ScoreManager.Instance.LoadLeaderBoards(page);
+        Invoke("EnableTransition", 1f);
+    }
+
+    void EnableTransition()
+    {
+        canTransition = true;
     }
 
     public void Quit()
@@ -27,13 +34,13 @@ public class StarView : MonoBehaviour
         names.text = ScoreManager.Instance.leaderBoardPositionsString;
         scores.text = ScoreManager.Instance.leaderBoardScoresString;
 
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && canTransition)
         {
             Application.Quit();
             return;
         }
 
-        if(Input.anyKeyDown && !moreButton.IsHovered() && !quitButton.IsHovered())
+        if(Input.anyKeyDown && !moreButton.IsHovered() && !quitButton.IsHovered() && canTransition)
         {
             AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 0.713f);
             AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.081f);
