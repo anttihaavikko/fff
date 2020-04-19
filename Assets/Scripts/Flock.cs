@@ -33,6 +33,8 @@ public class Flock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.Highpass(false);
+
         multi = 1;
         birds = new List<Bird>();
         cam = Camera.main;
