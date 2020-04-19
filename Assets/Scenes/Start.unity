@@ -651,7 +651,7 @@ RectTransform:
   - {fileID: 455675943}
   - {fileID: 1997311402}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2177,6 +2177,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 671262341}
   m_CullTransparentMesh: 0
+--- !u!114 &689970517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4816512881944928456, guid: d95b1d46499f24f659ee2a2512c8a73c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1997311401}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727b73a23f4a74b5c97682c6c3b84380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768249613
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,6 +3260,7 @@ MonoBehaviour:
   names: {fileID: 478702221}
   scores: {fileID: 1781661992}
   moreButton: {fileID: 1200526078}
+  quitButton: {fileID: 689970517}
 --- !u!4 &1371587768
 Transform:
   m_ObjectHideFlags: 0
@@ -3260,7 +3273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511845290
 GameObject:

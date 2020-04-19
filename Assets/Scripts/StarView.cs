@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StarView : MonoBehaviour
 {
     public TMPro.TMP_Text names, scores;
-	public GameButton moreButton;
+	public GameButton moreButton, quitButton;
 
 	private int page;
 
@@ -33,7 +33,7 @@ public class StarView : MonoBehaviour
             return;
         }
 
-        if(Input.anyKeyDown && !moreButton.IsHovered())
+        if(Input.anyKeyDown && !moreButton.IsHovered() && !quitButton.IsHovered())
         {
             AudioManager.Instance.PlayEffectAt(2, Vector3.zero, 0.713f);
             AudioManager.Instance.PlayEffectAt(1, Vector3.zero, 0.081f);
