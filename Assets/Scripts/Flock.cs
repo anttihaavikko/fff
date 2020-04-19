@@ -50,6 +50,17 @@ public class Flock : MonoBehaviour
         UseCursor(true);
     }
 
+    public Vector3 GetFocusPoint()
+    {
+        var p = transform.position;
+
+        birds.ForEach(b => p += b.transform.position);
+
+        var count = 1 + birds.Count;
+
+        return p / count;
+    }
+
     void UseCursor(bool state)
     {
         cursor.SetActive(state);

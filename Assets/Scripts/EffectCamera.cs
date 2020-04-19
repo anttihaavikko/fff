@@ -5,6 +5,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class EffectCamera : MonoBehaviour {
 
+	public Flock flock;
+
     private static readonly float defaultLensDistortion = 20f;
 
     private float cutoff = 1f, targetCutoff = 1f;
@@ -40,6 +42,18 @@ public class EffectCamera : MonoBehaviour {
 	}
 
 	void Update() {
+
+        if(flock)
+		{
+            var focus = flock.GetFocusPoint();
+            desiredPos = new Vector3(focus.x, focus.y, desiredPos.z);
+
+            if(flock.GetBirds().Count == 0)
+            {
+                desiredPos = originalPos;
+            }
+		}
+
         // chromatic aberration update
         if (ppVolume)
         {
