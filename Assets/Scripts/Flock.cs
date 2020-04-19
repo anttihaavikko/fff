@@ -83,6 +83,9 @@ public class Flock : MonoBehaviour
 
             effectCamera.BaseEffect(Mathf.Min(boostCount * 0.03f, 0.5f));
 
+            if(boostCount > 0)
+                AudioManager.Instance.curMusic.pitch = 1.2f;
+
             birds.ForEach(b => b.Boost());
 
             if (toldBoost)
