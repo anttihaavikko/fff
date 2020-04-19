@@ -14,6 +14,7 @@ public class StarView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
         AudioManager.Instance.Highpass(false);
 
         ScoreManager.Instance.LoadLeaderBoards(page);
