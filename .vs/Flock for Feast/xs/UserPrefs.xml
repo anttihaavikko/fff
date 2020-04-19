@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EffectCamera.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ScoreManager.cs">
     <Files>
       <File FileName="Assets/Scripts/GameButton.cs" Line="87" Column="1" />
-      <File FileName="Assets/Scripts/StarView.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/StarView.cs" Line="30" Column="3" />
       <File FileName="Assets/Scripts/Bird.cs" Line="15" Column="33" />
       <File FileName="Assets/Scripts/AudioManager.cs" Line="108" Column="35" />
-      <File FileName="Assets/Scripts/Flock.cs" Line="76" Column="31" />
-      <File FileName="Assets/Scripts/EffectCamera.cs" Line="60" Column="33" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="150" Column="62" />
+      <File FileName="Assets/Scripts/EffectCamera.cs" Line="60" Column="35" />
+      <File FileName="Assets/Scripts/ScoreManager.cs" Line="129" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +15,7 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="EffectCamera.cs" selected="True" />
+                <Node name="ScoreManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>

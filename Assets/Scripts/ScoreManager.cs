@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -36,7 +37,7 @@ public class ScoreManager : MonoBehaviour {
 
 	private int localRank = -1;
 
-    const string webURL = "http://games.sahaqiel.com/leaderboards/save-score.php?str=";
+    const string webURL = "https://games.sahaqiel.com/leaderboards/save-score.php?str=";
 
 	private bool enteringName = false;
 	private bool writingEnabled = false;
@@ -54,9 +55,11 @@ public class ScoreManager : MonoBehaviour {
 
 	private TouchScreenKeyboard keyboard = null;
 
-	/******/
+    private CertificateHandler certHandler;
 
-	private static ScoreManager instance = null;
+    /******/
+
+    private static ScoreManager instance = null;
 	public static ScoreManager Instance {
 		get { return instance; }
 	}
@@ -87,13 +90,14 @@ public class ScoreManager : MonoBehaviour {
 
 		FlagManager.Instance.HideAllFlags ();
 
-        WWW www = new WWW ("http://games.sahaqiel.com/leaderboards/load-scores.php?p=" + p + "&game=" + gameName);
+        var www = UnityWebRequest.Get("https://games.sahaqiel.com/leaderboards/load-scores.php?p=" + p + "&game=" + gameName);
+        www.certificateHandler = certHandler;
 
-		yield return www;
+        yield return www.SendWebRequest();
 
 		if (string.IsNullOrEmpty (www.error)) {
 
-			LeaderBoard lb = JsonUtility.FromJson<LeaderBoard> (www.text);
+			LeaderBoard lb = JsonUtility.FromJson<LeaderBoard> (www.downloadHandler.text);
 
 			leaderBoardString = "";
             leaderBoardPositionsString = "";
@@ -126,14 +130,15 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	IEnumerator DoFindPlayerRank() {
-        var url = "http://games.sahaqiel.com/leaderboards/get-rank.php?score=" + score + "&name=" + playerName + "&pid=" + SystemInfo.deviceUniqueIdentifier + "&game=" + gameName;
+        var url = "https://games.sahaqiel.com/leaderboards/get-rank.php?score=" + score + "&name=" + playerName + "&pid=" + SystemInfo.deviceUniqueIdentifier + "&game=" + gameName;
         //Debug.Log(url);
-        WWW www = new WWW (url);
+        var www = UnityWebRequest.Get(url);
+        www.certificateHandler = certHandler;
 
-		yield return www;
+        yield return www.SendWebRequest();
 
 		if (string.IsNullOrEmpty (www.error)) {
-			localRank = int.Parse (www.text);
+			localRank = int.Parse (www.downloadHandler.text);
 			localScoreString = (score > 0) ? FormatLeaderboardRow (localRank, playerName, score, "") : "";
 
             personalBestPos = localRank + ". " + playerName;
@@ -177,8 +182,10 @@ public class ScoreManager : MonoBehaviour {
 
 		LoadPrefs ();
 
-		//DontDestroyOnLoad(instance.gameObject);
-	}
+        //DontDestroyOnLoad(instance.gameObject);
+
+        certHandler = new CustomCertificateHandler();
+    }
 
 	void Update() {
 	}
@@ -205,9 +212,10 @@ public class ScoreManager : MonoBehaviour {
 
         //Debug.Log(data);
 
-        WWW www = new WWW (webURL + data);
+        var www = UnityWebRequest.Get(webURL + data);
+        www.certificateHandler = certHandler;
 
-		yield return www;
+        yield return www.SendWebRequest();
 
 		Invoke ("UploadingDone", 0.75f);
 	}
@@ -270,4 +278,21 @@ public class ScoreManager : MonoBehaviour {
 	{
 		return localRank > 0 ? "YOU RANKED <color=#FF9F1C>#" + localRank + "</color>" : "LOADING RANK...";
 	}
+}
+
+public class CustomCertificateHandler : CertificateHandler
+{
+    // Encoded RSAPublicKey
+    private static readonly string PUB_KEY = "";
+
+
+    /// <summary>
+    /// Validate the Certificate Against the Amazon public Cert
+    /// </summary>
+    /// <param name="certificateData">Certifcate to validate</param>
+    /// <returns></returns>
+    protected override bool ValidateCertificate(byte[] certificateData)
+    {
+        return true;
+    }
 }
