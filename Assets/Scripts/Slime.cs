@@ -7,6 +7,7 @@ public class Slime : MonoBehaviour {
 	public GameObject nodePrefab;
 	public Rigidbody2D controlNode;
 	public Transform face;
+    public Face actualFace;
     public Transform target;
     public List<string> eaten;
 
@@ -162,6 +163,16 @@ public class Slime : MonoBehaviour {
 	}
 
 	void Update() {
+
+        if(Random.value < 0.001f)
+        {
+            actualFace.Emote(Face.Emotion.Sneaky, Face.Emotion.Default, 2f);
+        }
+
+        if (Random.value < 0.001f)
+        {
+            actualFace.Emote(Face.Emotion.Angry, Face.Emotion.Default, 2f);
+        }
 
         //size = Mathf.MoveTowards(size, 5f, 0.001f);
         //Resize();

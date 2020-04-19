@@ -5,7 +5,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class EffectCamera : MonoBehaviour {
 
-    private static readonly float defaultLensDistortion = 10f;
+    private static readonly float defaultLensDistortion = 20f;
 
     private float cutoff = 1f, targetCutoff = 1f;
 	private float prevCutoff = 1f;
@@ -98,7 +98,7 @@ public class EffectCamera : MonoBehaviour {
         //impulseSource.GenerateImpulse(Vector3.one * mod * 1000f);
         Shake(0.5f * mod, 0.8f * mod);
         Chromate(2f * mod, 2f * mod);
-		Bulge(defaultLensDistortion * 2f * mod, 50f * mod);
+		Bulge(defaultLensDistortion * 3f * mod, 50f * mod);
 
 		//Time.timeScale = Mathf.Clamp(1f - 0.2f * mod, 0f, 1f);
 	}

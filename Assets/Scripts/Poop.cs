@@ -14,6 +14,12 @@ public class Poop : MonoBehaviour
             Invoke("Remove", 3f);
         }
 
+        if (collision.gameObject.tag == "SlimeLink")
+        {
+            var monster = collision.gameObject.GetComponentInParent<Slime>();
+            monster.actualFace.Emote(Face.Emotion.Shocked, Face.Emotion.Default, 1.5f);
+        }
+
         willBeRemoved = true;
     }
 

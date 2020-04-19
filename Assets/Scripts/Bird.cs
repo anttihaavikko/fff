@@ -191,6 +191,8 @@ public class Bird : MonoBehaviour
 
             var monster = collision.gameObject.GetComponentInParent<Slime>();
 
+            monster.actualFace.Emote(Face.Emotion.Angry, Face.Emotion.Sneaky, 1f);
+
             if(!monster.eaten.Contains(id))
             {
                 monster.eaten.Add(id);
@@ -198,6 +200,8 @@ public class Bird : MonoBehaviour
 
             if(monster.eaten.Count > flock.eatLimit)
             {
+                monster.actualFace.Emote(Face.Emotion.Brag, Face.Emotion.Angry, 1f);
+
                 monster.eaten.Clear();
                 flock.eatLimit *= 3;
                 flock.SpawnMonster();

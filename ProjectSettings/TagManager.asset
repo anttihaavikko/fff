@@ -9,6 +9,7 @@ TagManager:
   - SlimeLink
   - Poop
   - Bird
+  - OuterWall
   layers:
   - Default
   - TransparentFX

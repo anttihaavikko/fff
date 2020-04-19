@@ -340,7 +340,7 @@ MonoBehaviour:
   lookSpeed: 0.2
   emoteSpeed: 0.05
   mouthSprite: {fileID: 8626149695412619789}
-  mouthAngry: {fileID: 21300000, guid: 392a45e87520e468b86a91eca3d1a073, type: 3}
+  mouthAngry: {fileID: 21300000, guid: ae45cf62133474ce1a0eccf543795dcb, type: 3}
   mouthSad: {fileID: 21300000, guid: beb946e23a3a94a1b8a42805fba3b55c, type: 3}
   mouthHappy: {fileID: 21300000, guid: 392a45e87520e468b86a91eca3d1a073, type: 3}
   mouthOpen: {fileID: 21300000, guid: 41e107c9d89b2428aab7fd333dd3c9fc, type: 3}
