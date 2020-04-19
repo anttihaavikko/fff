@@ -412,6 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 1.3
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!1 &124868702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 1
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!1001 &455675942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1837,6 +1839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 2.75
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!114 &478702221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,6 +2576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 1.2
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!1 &1048222020
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,6 +2612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 2.5
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!114 &1048222022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3334,6 +3339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 2.75
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!1 &1567737029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,6 +3670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 2.75
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!114 &1781661992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4122,6 +4129,11 @@ PrefabInstance:
       propertyPath: appearAfter
       value: 3.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8010474888369526808, guid: d95b1d46499f24f659ee2a2512c8a73c,
+        type: 3}
+      propertyPath: notShownOnWeb
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d95b1d46499f24f659ee2a2512c8a73c, type: 3}
 --- !u!224 &1997311402 stripped
@@ -4327,6 +4339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appearAfter: 1.75
   hideDelay: 0
+  notShownOnWeb: 0
 --- !u!1 &2098937097
 GameObject:
   m_ObjectHideFlags: 0

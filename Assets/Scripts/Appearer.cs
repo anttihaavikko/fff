@@ -6,6 +6,8 @@ public class Appearer : MonoBehaviour
 {
 	public float appearAfter = -1f;
 	public float hideDelay;
+	public bool notShownOnWeb;
+
     private Vector3 size;
 
     private bool shown;
@@ -22,6 +24,9 @@ public class Appearer : MonoBehaviour
 
     public void Show()
     {
+		if (notShownOnWeb && Application.platform == RuntimePlatform.WebGLPlayer)
+			return;
+
         Tweener.Instance.ScaleTo(transform, size, 0.3f, 0f, TweenEasings.BounceEaseOut);
 
         if(!shown)
