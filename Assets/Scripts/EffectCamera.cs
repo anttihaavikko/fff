@@ -21,7 +21,7 @@ public class EffectCamera : MonoBehaviour {
 
     private float shakeAmount = 0f, shakeTime = 0f;
 
-	private Vector3 originalPos;
+	private Vector3 originalPos, desiredPos;
 
     private ChromaticAberration ca;
     private LensDistortion ld;
@@ -35,7 +35,7 @@ public class EffectCamera : MonoBehaviour {
         ppVolume.profile.TryGetSettings(out ld);
         ppVolume.profile.TryGetSettings(out cs);
 
-		originalPos = transform.position;
+		originalPos = desiredPos = transform.position;
 
 	}
 
@@ -71,7 +71,7 @@ public class EffectCamera : MonoBehaviour {
         }
         else
         {
-			transform.position = Vector3.MoveTowards(originalPos, originalPos, Time.deltaTime);
+			transform.position = Vector3.MoveTowards(transform.position, desiredPos, Time.deltaTime);
         }
     }
 

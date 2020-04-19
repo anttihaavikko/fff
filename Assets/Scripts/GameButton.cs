@@ -75,6 +75,8 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.267f);
         AudioManager.Instance.PlayEffectAt(19, Vector3.zero, 0.534f);
         AudioManager.Instance.PlayEffectAt(17, Vector3.zero, 0.785f);
+
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(-5f, 5f));
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -91,6 +93,8 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             bg.color = normalColor;
             text.color = normalColor;
         }
+
+        transform.rotation = Quaternion.Euler(Vector3.zero);
 
         AudioManager.Instance.PlayEffectAt(24, Vector3.zero, 0.267f);
         AudioManager.Instance.PlayEffectAt(19, Vector3.zero, 0.534f);
