@@ -66,7 +66,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void LoadLeaderBoards(int p) {
-        leaderBoardPositionsString = "LOADING...";
+        //leaderBoardPositionsString = "LOADING...";
 		StartCoroutine(DoLoadLeaderBoards(p));
 	}
 
@@ -127,7 +127,7 @@ public class ScoreManager : MonoBehaviour {
 
 	IEnumerator DoFindPlayerRank() {
         var url = "http://games.sahaqiel.com/leaderboards/get-rank.php?score=" + score + "&name=" + playerName + "&pid=" + SystemInfo.deviceUniqueIdentifier + "&game=" + gameName;
-        Debug.Log(url);
+        //Debug.Log(url);
         WWW www = new WWW (url);
 
 		yield return www;

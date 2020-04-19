@@ -13,8 +13,11 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Color normalColor, hoverColor;
     public string activatesScene;
     public UnityEvent action;
+    public bool hidesOnClick = true;
+
     private bool done;
     private Vector3 size;
+    private bool hovered;
 
     private void Start()
     {
@@ -25,14 +28,18 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (done) return;
 
-        appearer.Hide();
+        if(hidesOnClick)
+        {
+            appearer.Hide();
+            done = true;
+        }
 
         if (!string.IsNullOrEmpty(activatesScene))
             SceneChanger.Instance.ChangeScene(activatesScene);
 
         if (action != null) action.Invoke();
 
-        done = true;
+        //Invoke("RemoveHover", 0.25f);
 
         AudioManager.Instance.Lowpass(false);
         AudioManager.Instance.Highpass(false);
@@ -44,9 +51,16 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         //AudioManager.Instance.PlayEffectAt(14, transform.position, 1f);
     }
 
+    void RemoveHover()
+    {
+        hovered = false;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (done) return;
+
+        hovered = true;
 
         if (Tweener.Instance)
         {
@@ -66,6 +80,8 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (done) return;
 
+        hovered = false;
+
         if (Tweener.Instance)
         {
             Tweener.Instance.ScaleTo(transform, size * 0.9f, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
@@ -78,5 +94,10 @@ public class GameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         //AudioManager.Instance.PlayEffectAt(3, transform.position, 0.495f);
         //AudioManager.Instance.PlayEffectAt(9, transform.position, 1.229f);
         //AudioManager.Instance.PlayEffectAt(17, transform.position, 0.502f);
+    }
+
+    public bool IsHovered()
+    {
+        return hovered;
     }
 }

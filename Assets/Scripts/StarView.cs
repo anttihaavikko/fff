@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class StarView : MonoBehaviour
 {
     public TMPro.TMP_Text names, scores;
+	public GameButton moreButton;
+
+	private int page;
 
     // Start is called before the first frame update
     void Start()
     {
-        ScoreManager.Instance.LoadLeaderBoards(0);
+        ScoreManager.Instance.LoadLeaderBoards(page);
     }
 
     // Update is called once per frame
@@ -25,9 +28,19 @@ public class StarView : MonoBehaviour
             return;
         }
 
-        if(Input.anyKeyDown)
+        if(Input.anyKeyDown && !moreButton.IsHovered())
         {
-            SceneChanger.Instance.ChangeScene("Main");
-        }
+			SceneChanger.Instance.ChangeScene("Main");
+		}
     }
+
+    public void LoadMore()
+	{
+		page++;
+
+		if (ScoreManager.Instance.endReached)
+			page = 0;
+
+		ScoreManager.Instance.LoadLeaderBoards(page);
+	}
 }
