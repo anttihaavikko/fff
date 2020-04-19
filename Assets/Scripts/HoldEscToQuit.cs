@@ -6,6 +6,7 @@ public class HoldEscToQuit : MonoBehaviour
 {
     public Vector3 hiddenSize = Vector3.zero;
     public float speed = 0.3f;
+    public Transform bar;
 
     private Vector3 targetSize;
     private float escHeldFor;
@@ -40,8 +41,13 @@ public class HoldEscToQuit : MonoBehaviour
 
         if(escHeldFor > 1.5f)
         {
-            Debug.Log("Quit");
-            Application.Quit();
+            SceneChanger.Instance.ChangeScene("Start");
+        }
+
+        if (bar)
+        {
+            var amount = escHeldFor / 1.5f;
+            bar.transform.localScale = new Vector3(amount, 1f, 1f);
         }
     }
 

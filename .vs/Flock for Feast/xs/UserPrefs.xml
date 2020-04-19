@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{BEC7963C-4193-272A-A1D2-8391DA0C26D0}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Appearer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HoldEscToQuit.cs">
     <Files>
-      <File FileName="Assets/Scripts/Flock.cs" Line="344" Column="70" />
+      <File FileName="Assets/Scripts/Flock.cs" Line="77" Column="27" />
       <File FileName="Assets/Scripts/GameButton.cs" />
       <File FileName="Assets/Scripts/NameInput.cs" />
       <File FileName="Assets/Scripts/ScoreManager.cs" />
@@ -12,7 +12,8 @@
       <File FileName="Assets/Scripts/Blinders.cs" />
       <File FileName="Assets/Scripts/AudioManager.cs" />
       <File FileName="Assets/Scripts/SoundEffect.cs" />
-      <File FileName="Assets/Scripts/Appearer.cs" Line="27" Column="35" />
+      <File FileName="Assets/Scripts/Appearer.cs" Line="19" Column="45" />
+      <File FileName="Assets/Scripts/HoldEscToQuit.cs" Line="43" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,7 +21,7 @@
           <Node name="Flock for Feast" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="Appearer.cs" selected="True" />
+                <Node name="HoldEscToQuit.cs" selected="True" />
               </Node>
             </Node>
           </Node>
