@@ -27,6 +27,7 @@ public class Flock : MonoBehaviour
     private int eats;
     private int monsterCount = 1;
     private bool canRestart;
+    private bool dead;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +64,7 @@ public class Flock : MonoBehaviour
 
         transform.position = mouseInWorld;
 
-        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !dead)
         {
             hasBoosted = true;
 
@@ -221,6 +222,8 @@ public class Flock : MonoBehaviour
 
     void GameOver()
     {
+        dead = true;
+
         CancelInvoke("CheckForEnd");
         UpdateInputs("");
 
