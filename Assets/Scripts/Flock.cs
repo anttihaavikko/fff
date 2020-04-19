@@ -80,14 +80,14 @@ public class Flock : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 canRestart = false;
-                SceneManager.LoadSceneAsync("Start");
+                SceneChanger.Instance.ChangeScene("Start");
                 return;
             }
 
             if (Input.anyKeyDown)
             {
                 canRestart = false;
-                SceneManager.LoadSceneAsync("Main");
+                SceneChanger.Instance.ChangeScene("Main");
                 return;
             }
         }

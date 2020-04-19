@@ -21,7 +21,7 @@ public class StarView : MonoBehaviour
 
         if(Input.anyKeyDown)
         {
-            SceneManager.LoadSceneAsync("Main");
+            SceneChanger.Instance.ChangeScene("Main");
         }
     }
 }
