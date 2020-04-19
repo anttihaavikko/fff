@@ -85,12 +85,12 @@ public class Flock : MonoBehaviour
                 return;
             }
 
-            if (Input.anyKeyDown)
-            {
-                canRestart = false;
-                SceneChanger.Instance.ChangeScene("Main");
-                return;
-            }
+            //if (Input.anyKeyDown)
+            //{
+            //    canRestart = false;
+            //    SceneChanger.Instance.ChangeScene("Main");
+            //    return;
+            //}
 
             ShowHelp("<size=25>SCORE UPLOADED!</size>\n<size=15>" + ScoreManager.Instance.GetRank() + "</size>");
         }
@@ -243,8 +243,10 @@ public class Flock : MonoBehaviour
 
     void SubmitScore(string plrName)
     {
+        sendbutton.appearer.Hide();
+
         Tweener.Instance.ScaleTo(nameText.transform, Vector3.zero, 0.2f, 0f, TweenEasings.QuadraticEaseOut);
-        ShowHelp("<size=25>UPLOADING SCORE...</size>");
+        ShowHelp("<size=25>UPLOADING SCORE...\n<size=15>PLEASE WAIT</size></size>");
 
         ScoreManager.Instance.onUploaded += Uploaded;
         ScoreManager.Instance.SubmitScore(plrName, score, eats);
