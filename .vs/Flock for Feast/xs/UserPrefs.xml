@@ -7,7 +7,7 @@
       <File FileName="Assets/Scripts/AudioManager.cs" Line="108" Column="35" />
       <File FileName="Assets/Scripts/Flock.cs" Line="150" Column="62" />
       <File FileName="Assets/Scripts/EffectCamera.cs" Line="60" Column="35" />
-      <File FileName="Assets/Scripts/ScoreManager.cs" Line="129" Column="25" />
+      <File FileName="Assets/Scripts/ScoreManager.cs" Line="211" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
